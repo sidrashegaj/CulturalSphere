@@ -1,14 +1,13 @@
 <?php
-$host = 'localhost';  // XAMPP or WAMP default is localhost
-$user = 'root';       // Default username for XAMPP/WAMP is 'root'
-$password = '';       // Default password is empty
-$database = 'cultural_sphere'; // Your database name
+$host = 'localhost'; 
+$dbname = 'cultural_sphere'; 
+$username = 'root'; 
+$password = ''; 
 
-// Connect to the database
-$conn = new mysqli($host, $user, $password, $database);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
