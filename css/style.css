@@ -262,6 +262,74 @@ section {
 }
 
 
+/* Card Hover Section */
+.trendingfilms, .trendingbooks, .trendingart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0; /* Matches the spacing of other sections */
+    background-color: #f4f4f4; /* Background specific to this section */
+}
+
+.card-wrap {
+    position: relative;
+    width: 300px; /* Fixed width to ensure consistent layout */
+    height: 400px; /* Fixed height for cards */
+    cursor: pointer;
+}
+
+.card {
+    position: absolute;
+    width: 80%; /* Size of each card relative to the card wrapper */
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Bottom Card */
+.card.bottom {
+    transform: translateX(-20px) rotateZ(-8deg);
+    z-index: 1;
+}
+
+/* Middle Card */
+.card {
+    transform: translateX(0) rotateZ(-4deg);
+    z-index: 2;
+}
+
+/* Top Card */
+.card.top {
+    transform: translateX(1rem) rotateZ(8deg);
+    z-index: 3;
+}
+
+/* Hover Effect */
+.card-wrap:hover .card.bottom {
+    transform: translateX(-15rem) rotateZ(-12deg);
+}
+
+.card-wrap:hover .card {
+    transform: translateX(0) rotateZ(-6deg);
+}
+
+.card-wrap:hover .card.top {
+    transform: translateX(15rem) rotateZ(12deg);
+}
+
+/* Section Title */
+.trendingfilms .description-text h1 {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    font-family: 'Georgia', serif;
+}
+
+
 
 /* Top Info Section */
 #info {
