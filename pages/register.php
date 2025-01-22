@@ -27,8 +27,8 @@
                 <div class="col-md-12 p-5">
                     <h2 class="text-center mb-4 text-dark">Join Cultural Sphere</h2>
                     <p class="text-center text-muted mb-4">Create an account to explore and share culture</p>
-                    <form action="../pages/register.php" method="POST">
-                        <div class="mb-3">
+                    <form action="../pages/process-register.php" method="POST">
+                    <div class="mb-3">
                             <label for="name" class="form-label text-dark">Full Name</label>
                             <input type="text" class="form-control rounded-pill" id="name" name="name" placeholder="Enter your name" required>
                         </div>
