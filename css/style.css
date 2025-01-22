@@ -70,6 +70,7 @@ section {
     }
 }
 
+
 /* Navbar Styles */
 .navbar {
     background-color: black; 
@@ -118,7 +119,7 @@ section {
 
 .nav-link.active,
 .nav-link:hover {
-    color: #61714D; 
+    color: #6D152B; 
 }
 
 .btn-outline {
@@ -157,7 +158,6 @@ section {
 .d-none {
     display: none !important;
 }
-
 
 /* Hero Section */
 .hero-section {
