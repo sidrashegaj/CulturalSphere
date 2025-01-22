@@ -1,4 +1,10 @@
-
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
 section {
     padding: 20px;
 }
@@ -13,24 +19,23 @@ section {
 }
 /* Style the scrollbar */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 10px; /* Width of the scrollbar */
 }
 
 /* Style the track (background of the scrollbar) */
 ::-webkit-scrollbar-track {
     background: #010101; /* Match your website background */
-    border-radius: 10px; /* Optional: rounded corners */
 }
 
 /* Style the scrollbar thumb (scroll handle) */
 ::-webkit-scrollbar-thumb {
-    background: #FFB300; /* Match your website's accent color */
+    background: #6D152B; /* Match your website's accent color */
     border-radius: 10px; /* Optional: rounded corners */
 }
 
 /* Style the scrollbar thumb when hovered */
 ::-webkit-scrollbar-thumb:hover {
-    background: #FFA500; /* Darker or lighter shade for hover effect */
+    background: #591123; /* Darker or lighter shade for hover effect */
 }
 
 /* Style for the scrollbar buttons (if applicable) */
@@ -42,149 +47,142 @@ section {
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
-/* General Styles */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-  }
-/* General Reset */
-body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background: #121212; /* Dark background for contrast */
-    color: white;
-  }
-  
-  /* Navbar */
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    width: 100%;
+
+/* Navbar button adjustments for small screens */
+@media (max-width: 768px) {
+    .navbar .d-flex {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center align them */
+        
+        gap: 10px; /* Add space between buttons */
+    }
+
+    .navbar .btn {
+        margin-top: 355px;
+        width: 100%; /* Make buttons full-width */
+    }
+}
+
+/* Optional: Improve spacing and styling for larger screens */
+@media (min-width: 769px) {
+    .navbar .d-flex .btn {
+        margin-left: 10px; /* Add spacing between buttons */
+    }
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: black; 
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky; 
     top: 0;
-    z-index: 1000;
-    padding: 1.5rem 2rem;
-    background: rgba(0, 0, 0, 0.5); /* Transparent black */
-    backdrop-filter: blur(10px); /* Blur for a fancy look */
-    color: white;
-    box-shadow: 0 4px 6px rgba(207, 86, 86, 0.1);
-    transition: background 0.3s ease; /* Smooth transition for scrolling effect */
-  }
-  
-  .navbar:hover {
-    background: rgba(0, 0, 0, 0.8); /* Darker on hover for contrast */
-  }
-  
-  .navbar .container {
+    z-index: 10;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
+    align-items: center; /* Ensure vertical alignment of content */
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Book', serif; 
+    color: #ffffff;
+    text-transform: uppercase;
     margin: 0 auto;
-  }
-  
-  .navbar-brand {
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: white;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-brand span {
-    color: #ffc107; /* Gold for "SPHERE" */
-  }
-  
-  .navbar-links {
     display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar-links li {
-    margin: 0 1rem;
-  }
-  
-  .navbar-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .navbar-links a:hover {
-    color: #ffc107; /* Gold on hover */
-    transform: scale(1.1); /* Slight zoom effect */
-  }
-  
-  .navbar-right {
+    align-items: center; /* Center text vertically */
+}
+
+.navbar span {
+    color: #6D152B;
+}
+
+.navbar-nav {
     display: flex;
-    gap: 1rem;
-  }
-  
-  .navbar-right .btn {
-    padding: 0.5rem 1.5rem;
-    border: 1px solid #ffc107;
-    border-radius: 50px;
-    background: transparent;
-    color: white;
+    align-items: center; /* Align nav items vertically */
+    gap: 15px; /* Add space between items */
+}
+
+.nav-item {
+    display: flex;
+    align-items: center; /* Align nav items vertically */
+}
+
+.nav-link {
     font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
+    font-family: 'Franklin Gothic Book', sans-serif;
+    text-transform: capitalize;
+    font-weight: 400; 
+    color: white;
+    margin-right: 0; /* Remove margin as gap is used */
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #61714D; 
+}
+
+.btn-outline {
+    color: white; 
+    border: 1px solid #6D152B; 
+    font-style: italic; 
+    font-family: 'Georgia', serif; 
+    font-size: 10px; 
+    padding: 8px 18px; 
+    text-transform: uppercase; 
     transition: all 0.3s ease;
-  }
-  
-  .navbar-right .btn:hover {
-    background: #ffc107;
-    color: black;
-  }
-  
-  /* Add Smooth Scrolling Effect */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navbar-links {
-      display: none; /* Hide links on small screens */
-    }
-  
-    .navbar-right {
-      display: none; /* Hide buttons on small screens */
-    }
-  
-    .navbar {
-      justify-content: center; /* Center-align navbar for mobile */
-    }
-  }
-  
+    border-radius: 13px;
+    display: flex;
+    align-items: center; /* Align text vertically inside buttons */
+}
+
+.btn-outline:hover {
+    color: #ffffff !important; /* Black text on hover */
+    background-color: transparent; /* No background */
+    border: 1px solid #6D152B; /* Keep border gold */
+}
+
+/* Profile Icon Styling */
+#user-profile img {
+    border: 2px solid #61714D; /* Match gold color */
+    padding: 2px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#user-profile img:hover {
+    transform: scale(1.1);
+}
+
+.d-none {
+    display: none !important;
+}
+
+
 /* Hero Section */
 .hero-section {
-    height: 100vh;
-    background-image: url('../images/ny.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     position: relative;
+    height: 100vh;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
+    overflow: hidden; /* Prevents video overflow */
+}
+
+.bg-video, .video-bg2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire background */
+    z-index: -1; /* Sends the video behind the content */
+}
+
+.video-bg2{
+    position: fixed;
 }
 
 .hero-section::before {
@@ -194,46 +192,72 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Transparent overlay */
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
     z-index: 1;
 }
 
+.hero-section .content {
+    position: relative; /* Positions content above the video */
+    z-index: 2; /* Keeps content on top of overlay and video */
+}
+
 .hero-section h1 {
-    font-size: 4rem;
-    font-family: 'Franklin Gothic Book', serif;
+    font-size: 8rem;
+    font-family: "Cinzel", serif;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
-    z-index: 2;
+    position: relative;
+    animation: slow-fade-loop 10s linear infinite;
 }
 
 .hero-section p {
     font-size: 1.5rem;
     font-family: 'Georgia', serif;
     font-style: italic;
-    margin-bottom: 2rem; /* Add spacing below the subheading */
-    z-index: 2;
+    margin-bottom: 2rem;
 }
 
 .hero-section button {
-    background-color: transparent;
-    border-radius: 0%;
-    color: white !important;
+    background-color: white;
+    border-radius: 17px;
+    color: black !important;
     border: 1px solid white;
     font-size: 1rem;
     font-style: italic;
     font-weight: 400;
     padding: 10px 20px;
     text-transform: capitalize;
-    z-index: 2;
     cursor: pointer;
 }
 
 .hero-section button:hover {
     color: black !important;
-    border-color: black; /* Match text color */
+    border-color: black; 
     background-color: white !important;
+}
 
+/* Animation */
+@keyframes slow-fade-loop {
+    0% {
+        transform: translateX(0);
+        opacity: 1;}
+    45% {
+        transform: translateX(50vw);
+        opacity: 1;}
+    50% {
+        transform: translateX(100vw);
+        opacity: 0;}
+    55% {
+        transform: translateX(-100vw);
+        opacity: 0;}
+    60% {
+        transform: translateX(-50vw);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;}
 }
 
 
@@ -241,7 +265,7 @@ body, html {
 /* Top Info Section */
 #info {
     padding: 40px 0; /* Add spacing for a larger section */
-    background-color: #ffc107; /* Golden background color */
+    background-color: #61714D; /* Golden background color */
     display: flex;
     justify-content: space-around; /* Evenly space the columns */
     align-items: center; /* Center content vertically */
@@ -330,7 +354,7 @@ body, html {
 /* Testimonials Section */
 /* Testimonials Section */
 #testimonials {
-    background-color: #FFB300;
+    background-color: #61714D;
     padding: 2rem 0;
     text-align: center;
 }
@@ -472,7 +496,7 @@ body, html {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #FFB300;
+    color: #61714D;
     cursor: pointer;
     width: calc(100% - 20px);
 
@@ -509,7 +533,7 @@ body, html {
 }
 
 #services .btn-dark:hover {
-    background-color: #FFB300;
+    background-color: #61714D;
     color: black;
     transform: scale(1.05);
 }
@@ -605,7 +629,7 @@ body, html {
 
 #quote-form input:focus,
 #quote-form textarea:focus {
-    border-color: #ffb300;
+    border-color: #61714D;
 }
 
 #quote-form button {
@@ -617,7 +641,7 @@ body, html {
 }
 
 #quote-form button:hover {
-    background-color: #ffb300;
+    background-color: #61714D;
     transform: scale(1.05);
 }
 
@@ -648,182 +672,6 @@ body, html {
 .image-overlay-wrapper img {
     width: 100%;
     display: block;
-}
-/* Video Background Container */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../images/background_login.mp4') no-repeat center center fixed; /* Fallback image */
-    background-size: cover;
-    z-index: -2;
-}
-
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.video-bg video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.login-section .container {
-    position: relative;
-    z-index: 1;
-    max-width: 400px; /* Set a smaller width for the card */
-    max-height:60%;
-}
-
-.login-section .row {
-    max-width: 80%; /* Ensure responsiveness */
-    margin: auto; /* Center the card */
-    background-color: rgba(230, 220, 220, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Title and Text */
-.login-section h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #000;
-}
-
-.login-section p {
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-
-/* Form Inputs */
-.login-section .form-control {
-    border-radius: 50px; /* Rounded inputs */
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease-in-out;
-}
-
-.login-section .form-control:focus {
-    border-color: #ffa500;
-    box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
-}
-
-/* Buttons */
-.login-section .btn {
-    border-radius: 50px; /* Rounded buttons */
-    padding: 10px 15px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-}
-
-.login-section .btn:hover {
-    background-color: #ffb300;
-    color: #fff;
-    transform: scale(1.05);
-}
-
-/* Links */
-.login-section a {
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
-}
-
-.login-section a:hover {
-    color: #ffa500;
-}
-
-/* Video Background */
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.video-bg video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.register-section .container {
-    position: relative;
-    z-index: 1;
-}
-
-.register-section .row {
-    max-width: 90%;
-    margin: auto;
-    background-color: rgba(245, 245, 245, 0.9); /* Slightly lighter than login */
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-}
-
-/* Title and Text Styling */
-.register-section h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.register-section p {
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-
-/* Input Fields */
-.register-section .form-control {
-    border-radius: 30px; /* Rounded inputs */
-    padding: 12px 20px;
-    font-size: 0.9rem;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease-in-out;
-}
-
-.register-section .form-control:focus {
-    border-color: #ffb300;
-    box-shadow: 0 0 5px rgba(255, 179, 0, 0.5);
-}
-
-/* Buttons */
-.register-section .btn {
-    border-radius: 30px; /* Rounded buttons */
-    padding: 12px 20px;
-    font-weight: bold;
-    background-color: #ffb300;
-    color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-.register-section .btn:hover {
-    background-color: #e89a00;
-    color: white;
-    transform: scale(1.05);
-}
-
-/* Links */
-.register-section a {
-    font-size: 0.85rem;
-    color: #ffb300;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.register-section a:hover {
-    color: #e89a00;
 }
 
 .card-overlay {
@@ -950,7 +798,7 @@ footer small {
 }
 
 #contact a:hover {
-    color: #FFB300;
+    color: #61714D;
 }
 
 #contact .btn {
@@ -1237,7 +1085,7 @@ text-align: center;
     #services .card-overlay h3 {
         font-size: 1.5rem; /* Adjust for readability */
         margin-bottom: 5px; /* Smaller margin for better spacing */
-        color: #FFB300; /* Add accent color */
+        color: #61714D; /* Add accent color */
     }
     
     #services .card-overlay p {
@@ -1292,7 +1140,7 @@ text-align: center;
    
     #expert-understanding h2{
         font-size: 30px;
-        color: #FFA500;
+        color: #61714D;
         font-weight: bold;
         text-align: center;
     }
