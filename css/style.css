@@ -70,6 +70,7 @@ section {
     }
 }
 
+
 /* Navbar Styles */
 .navbar {
     background-color: black; 
@@ -118,19 +119,20 @@ section {
 
 .nav-link.active,
 .nav-link:hover {
-    color: #61714D; 
+    color: #6D152B; 
 }
 
 .btn-outline {
     color: white; 
     border: 1px solid #6D152B; 
-    font-style: italic; 
-    font-family: 'Georgia', serif; 
-    font-size: 10px; 
+    background-color: #6D152B;
+    font-family: 'Franklin Gothic Book', serif;
+    font-size: 0.8rem;
+    font-weight: 400; 
     padding: 8px 18px; 
-    text-transform: uppercase; 
+    text-transform: uppercase;
     transition: all 0.3s ease;
-    border-radius: 13px;
+    border-radius: 15px;
     display: flex;
     align-items: center; /* Align text vertically inside buttons */
 }
@@ -156,7 +158,6 @@ section {
 .d-none {
     display: none !important;
 }
-
 
 /* Hero Section */
 .hero-section {
