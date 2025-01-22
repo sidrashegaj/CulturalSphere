@@ -11,9 +11,9 @@
 </head>
 <body>
     <!-- Video Background -->
-    <div class="video-bg">
-        <video autoplay muted loop class="bg-video">
-            <source src="../images/background_login - Made with Clipchamp.mp4" type="video/mp4">
+    <div class="video-bg2">
+        <video autoplay muted loop class="video-bg2">
+            <source src="../images/backgmain.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="overlay"></div> <!-- Add an overlay to darken the video -->
