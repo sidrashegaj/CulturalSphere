@@ -1,0 +1,153 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Black background to match the hero section */
+    color: #f8f8f8; /* Light text color for contrast */
+}
+
+/* General styling for the hero section */
+.hero {
+    background-color: black;
+    color: white;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Individual image styling and positioning */
+.image-tablet {
+    position: absolute;
+    top: 10%; /* Position slightly down */
+    left: 3%; /* Align to the left */
+    width: 28%; /* Set width relative to the viewport */
+    border-radius: 5px;
+    object-fit: cover;
+    z-index: 3; /* Layer this image on top */
+}
+
+.image-dog {
+    position: absolute;
+    bottom: 11%; /* Lower the dog image */
+    left: 8%; /* Offset to the right of the tablet image */
+    width: 30%; /* Larger width for the second image */
+    border-radius: 5px;
+    object-fit: cover;
+    z-index: 2; /* Place below the first image */
+}
+
+.image-man {
+    position: absolute;
+    top: 20%; /* Slightly higher */
+    right: 10%; /* Align to the right */
+    width: 25%; /* Medium width */
+    border-radius: 5px;
+    object-fit: cover;
+    z-index: 4; /* Bring to the top layer */
+}
+
+.image-book {
+    position: absolute;
+    top: 13%; /* Align near the bottom */
+    left: 30%; /* Center horizontally */
+    width: 25%; /* Medium width */
+    border-radius: 5px;
+    object-fit: cover;
+    z-index: 1; /* Place behind all other images */
+}
+
+/* Circular text styling */
+.hero-circle {
+    position: absolute;
+    bottom: 20%; /* Position above the bottom */
+    right: 5%; /* Align to the right */
+    text-align: center;
+    z-index: 5; /* Always on top */
+}
+
+.hero-circle p {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(-90deg);
+    margin: 0;
+    color: white;
+}
+
+.hero-circle .arrow {
+    font-size: 24px;
+    margin-top: 10px;
+    color: white;
+}
+
+
+
+
+/* Catalog Section */
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Updated to 4 items per row */
+    gap: 20px; /* Equal spacing between grid items */
+    padding: 20px;
+    max-width: 1200px; /* Centered content width */
+    margin: 0 auto; /* Center the grid on the screen */
+}
+
+.film {
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s;
+    width: 160px; /* Slightly wider than the image for padding */
+    margin: 0 auto; /* Center the box in the grid */
+}
+
+.film img {
+    width: 100%; /* Ensures the image fills its container */
+    height: auto; /* Maintains the aspect ratio */
+    max-width: 150px; /* Limits the width to match the proportions */
+    max-height: 225px; /* Adjusts the height for vertical alignment */
+    border-radius: 5px;
+    object-fit: cover; /* Ensures the image scales without distortion */
+}
+
+.film p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.film a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.film:hover {
+    transform: scale(1.05);
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
