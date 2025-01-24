@@ -11,9 +11,9 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link " href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
-                <li class="nav-item"><a class="nav-link " href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link " href="pages/films.php">Films</a></li>
+                <li class="nav-item"><a class="nav-link " href="pages/books.php">Books</a></li>
+                <li class="nav-item"><a class="nav-link " href="pages/art.php">Art</a></li>
                 <li class="nav-item"><a class="nav-link " href="testimonials.html">Testimonials</a></li>
                 <!-- Dynamic Login/Register or Profile Section -->
                 <li class="nav-item" id="auth-section">
