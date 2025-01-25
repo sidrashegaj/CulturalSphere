@@ -2,7 +2,19 @@
 session_start();
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black py-3">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Sphere</title>
+    <!-- Link to navbar styles -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <!-- Link to Bootstrap -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-3">
     <div class="container">
         <a class="navbar-brand fw-bold text-light" href="index.php">CULTURAL <span>SPHERE</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -38,3 +50,5 @@ session_start();
         </div>
     </div>
 </nav>
+</body>
+

@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="../css/pagesstyles.css">
 </head>
 <body>
+    <!-- Include Header -->
+    <?php include '../includes/header.php'; ?>
     <section class="hero">
         <div class="hero-content">
             <div class="hero-images">
-                <img src="../images/films/filmscene.jpg" alt="CitizenKane" class="image-tablet">
-                <img src="../images/films/filmscene2.jpg" alt="TheGodfather" class="image-dog">
-                <img src="../images/films/filmscene3.jpg" alt="DrStrangelove" class="image-man">
-                <img src="../images/films/filmscene4.jpg" alt="TheBookThief" class="image-book">
+                <img src="../images/films/filmscene.jpg" alt="CitizenKane" class="image-topleft">
+                <img src="../images/films/filmscene2.jpg" alt="TheGodfather" class="image-bottomleft">
+                <img src="../images/films/filmscene3.jpg" alt="DrStrangelove" class="image-bottomright">
+                <img src="../images/films/filmscene4.jpg" alt="TheBookThief" class="image-topright">
             </div>
             <div class="hero-circle">
-                <p>CULTURAL SPHERE</p>
-                <div class="arrow">↓</div>
+                <div class="circle-text">
+                    <span>Cinematic Culture</span>
+                </div>
             </div>
         </div>
     </section>
+
 
 
     <main class="catalog">
@@ -71,8 +75,9 @@
         }
         ?>
     </main>
-    <footer>
-        <p>&copy; 2025 Cultural Sphere</p>
-    </footer>
+    
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
+    
 </body>
 </html>
