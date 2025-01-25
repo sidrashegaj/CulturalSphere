@@ -3,25 +3,37 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000; /* Black background to match the hero section */
+    background-color: rgb(255, 249, 228); /* Black background to match the hero section */
     color: #f8f8f8; /* Light text color for contrast */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+html {
+    box-sizing: border-box; /* Include padding and border in width/height calculations */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit; /* Ensure consistent box-sizing */
 }
 
 /* General styling for the hero section */
 .hero {
-    background-color: black;
+    background-color: #440e1b;
     color: white;
     width: 100vw; /* Full viewport width */
     height: 100vh; /* Full viewport height */
     display: flex;
     justify-content: center;
     position: relative;
+    overflow: hidden; /* Prevent any child overflow */
 }
 
 .hero-content {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden; /* Prevent any child overflow */
 }
 
 .hero-images {
@@ -31,72 +43,59 @@ body {
 }
 
 /* Individual image styling and positioning */
-.image-tablet {
+.image-topleft {
     position: absolute;
-    top: 10%; /* Position slightly down */
-    left: 3%; /* Align to the left */
-    width: 28%; /* Set width relative to the viewport */
+    top: 6%; /* Position slightly down */
+    left: 2%; /* Align to the left */
+    width: 30%; /* Set width relative to the viewport */
     border-radius: 5px;
     object-fit: cover;
     z-index: 3; /* Layer this image on top */
 }
 
-.image-dog {
+.image-bottomleft {
     position: absolute;
-    bottom: 11%; /* Lower the dog image */
-    left: 8%; /* Offset to the right of the tablet image */
-    width: 30%; /* Larger width for the second image */
+    bottom: 10%; /* Lower the dog image */
+    left: 10%; /* Offset to the right of the tablet image */
+    width: 35%; /* Larger width for the second image */
     border-radius: 5px;
     object-fit: cover;
     z-index: 2; /* Place below the first image */
 }
 
-.image-man {
+.image-bottomright {
     position: absolute;
-    top: 20%; /* Slightly higher */
-    right: 10%; /* Align to the right */
-    width: 25%; /* Medium width */
+    bottom: 8%; /* Slightly higher */
+    right: 20%; /* Align to the right */
+    width: 30%; /* Medium width */
     border-radius: 5px;
     object-fit: cover;
-    z-index: 4; /* Bring to the top layer */
+    z-index: 1; /* Bring to the top layer */
 }
 
-.image-book {
+.image-topright {
     position: absolute;
-    top: 13%; /* Align near the bottom */
-    left: 30%; /* Center horizontally */
-    width: 25%; /* Medium width */
+    top: 12%; /* Align near the bottom */
+    left: 35%; /* Center horizontally */
+    width: 32%; /* Medium width */
     border-radius: 5px;
     object-fit: cover;
     z-index: 1; /* Place behind all other images */
 }
 
-/* Circular text styling */
-.hero-circle {
-    position: absolute;
-    bottom: 20%; /* Position above the bottom */
-    right: 5%; /* Align to the right */
-    text-align: center;
-    z-index: 5; /* Always on top */
+.hero-images img:hover {
+    transform: scale(1.05);
 }
 
-.hero-circle p {
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    writing-mode: vertical-rl;
-    transform: rotate(-90deg);
-    margin: 0;
-    color: white;
+/* Animation for rotating text */
+@keyframes rotate-circle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
-
-.hero-circle .arrow {
-    font-size: 24px;
-    margin-top: 10px;
-    color: white;
-}
-
-
 
 
 /* Catalog Section */
