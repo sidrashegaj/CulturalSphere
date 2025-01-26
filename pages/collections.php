@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: rgba(178, 91, 78, 0.89);
             margin: 0;
             padding: 0;
         }
@@ -16,113 +16,113 @@
         h1 {
             text-align: center;
             margin-top: 20px;
-            color: #333;
+            color: #fff;
         }
 
         #collections-container {
             max-width: 1200px;
             margin: 20px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
         }
 
         .collection-card {
             background: white;
-            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .collection-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .collection-card h3 {
-            margin: 0 0 10px;
-            font-size: 1.5em;
+            margin: 15px;
+            font-size: 1.4em;
             color: #333;
         }
 
         .collection-card p {
+            margin: 0 15px 20px;
             color: #666;
-            margin: 0 0 20px;
+            font-size: 1em;
         }
 
         .collection-card button {
-            background-color: #3498db;
+            display: block;
+            width: calc(100% - 30px);
+            margin: 0 auto 20px;
+            padding: 10px 15px;
+            background-color: #8b0000;
             color: white;
-            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 8px;
             font-size: 1em;
             font-weight: bold;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
 
         .collection-card button:hover {
-            background-color: #2980b9;
+            background-color: #660000;
         }
 
-        .pinterest-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .grid-item {
+        #new-collection-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: white;
-            border: 1px solid #ddd;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
         }
 
-        .grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .grid-item img {
-            max-width: 100%;
-            border-radius: 5px;
+        #new-collection-modal input,
+        #new-collection-modal textarea {
+            width: 100%;
             margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
         }
 
-        .grid-item p {
-            margin: 0;
-            font-size: 1em;
-            color: #333;
-        }
-
-        button.back-button {
-            display: block;
-            margin: 20px auto;
-            background-color: #e74c3c;
+        #new-collection-modal button {
+            background-color: #8b0000;
             color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #new-collection-modal button:hover {
+            background-color: #660000;
+        }
+
+        #new-collection-btn {
+            display: block;
+            margin: 20px auto;
+            background-color: #8b0000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
             font-size: 1em;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        button.back-button:hover {
-            background-color: #c0392b;
+        #new-collection-btn:hover {
+            background-color: #660000;
         }
     </style>
 </head>
@@ -130,79 +130,74 @@
     <?php include '../includes/header.php'; ?>
 
     <h1>My Collections</h1>
-
+    <button id="new-collection-btn">+ Add New Collection</button>
     <div id="collections-container"></div>
 
+    <!-- Add New Collection Modal -->
+    <div id="new-collection-modal">
+        <h2>Add New Collection</h2>
+        <form id="new-collection-form">
+            <input type="text" name="name" placeholder="Collection Name" required>
+            <textarea name="description" placeholder="Collection Description"></textarea>
+            <button type="submit">Create Collection</button>
+        </form>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
     <script>
-        async function fetchCollections() {
-            try {
-                const response = await fetch('../api/collections.php', {
-                    method: 'GET',
-                    credentials: 'include'
-                });
+        const modal = document.getElementById('new-collection-modal');
+        document.getElementById('new-collection-btn').addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch collections');
-                }
-
-                const collections = await response.json();
-
-                const container = document.getElementById('collections-container');
-                if (collections.length > 0) {
-                    container.innerHTML = collections.map(collection => `
-                        <div class="collection-card">
-                            <h3>${collection.name}</h3>
-                            <p>${collection.description || "No description provided."}</p>
-                            <button onclick="viewCollection(${collection.id})">View Collection</button>
-                        </div>
-                    `).join('');
-                } else {
-                    container.innerHTML = `<p>No collections found.</p>`;
-                }
-            } catch (error) {
-                console.error('Error fetching collections:', error);
-                alert('Error fetching collections. Please try again.');
-            }
+        function closeModal() {
+            modal.style.display = 'none';
         }
 
-        async function viewCollection(collectionId) {
+        document.getElementById('new-collection-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
             try {
-                const response = await fetch(`../api/collections.php?id=${collectionId}`, {
-                    method: 'GET',
+                const response = await fetch('../api/collections.php', {
+                    method: 'POST',
+                    body: formData,
                     credentials: 'include',
                 });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch collection items');
-                }
+                if (!response.ok) throw new Error('Failed to create collection');
 
-                const items = await response.json();
-
-                const container = document.getElementById('collections-container');
-                if (items.length > 0) {
-                    container.innerHTML = `
-                        <h2>Collection Items</h2>
-                        <div class="pinterest-grid">
-                            ${items.map(item => `
-                                <div class="grid-item">
-                                    ${item.item_type === 'film' ? `<img src="../images/films/${item.film_title.replace(/ /g, "_")}.jpg" alt="${item.film_title}">` : ''}
-                                    ${item.item_type === 'book' ? `<img src="../images/books/${item.book_title.replace(/ /g, "_")}.jpg" alt="${item.book_title}">` : ''}
-                                    <p>${item.item_type === 'film' ? `Film: ${item.film_title}` : `Book: ${item.book_title}`}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <button class="back-button" onclick="fetchCollections()">Back to Collections</button>
-                    `;
-                } else {
-                    container.innerHTML = `
-                        <h2>No Items Found in Collection</h2>
-                        <button class="back-button" onclick="fetchCollections()">Back to Collections</button>
-                    `;
-                }
+                alert('Collection created successfully');
+                closeModal();
+                fetchCollections();
             } catch (error) {
-                console.error('Error fetching collection items:', error);
-                alert('An error occurred while fetching collection items. Please try again.');
+                alert('Error creating collection');
+                console.error(error);
             }
+        });
+
+        async function fetchCollections() {
+            try {
+                const response = await fetch('../api/collections.php', { method: 'GET', credentials: 'include' });
+                if (!response.ok) throw new Error('Failed to fetch collections');
+
+                const collections = await response.json();
+                const container = document.getElementById('collections-container');
+                container.innerHTML = collections.map(collection => `
+                    <div class="collection-card">
+                        <h3>${collection.name}</h3>
+                        <p>${collection.description || "No description provided."}</p>
+                        <button onclick="viewCollection(${collection.id})">View Collection</button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                alert('Error fetching collections');
+                console.error(error);
+            }
+        }
+
+        function viewCollection(id) {
+            window.location.href = `collection_items.php?collection_id=${id}`;
         }
 
         fetchCollections();
