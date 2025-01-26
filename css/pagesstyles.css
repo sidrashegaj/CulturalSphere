@@ -17,6 +17,40 @@ html {
     box-sizing: inherit;
 }
 
+/* Circle Text Styling */
+.circle-text {
+    position: absolute; /* Position within the hero section */
+    top: 25%; /* Adjust top placement */
+    left: 85%; /* Adjust left placement */
+    transform: translate(-50%, -50%); /* Center transform */
+    font-family: "Cinzel", serif;
+    text-transform: uppercase;
+    font-size: 2.1rem;
+    color: #fff6ef;
+    cursor: pointer;
+    animation: rotate 8s linear infinite; /* Rotating animation */
+    z-index: 10;
+    width: 350px; /* Diameter of the circle */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rotation Animation */
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.circle-text:hover {
+    animation-duration: 5s; /* Speed up rotation on hover */
+}
+
 /* Hero Section */
 .hero {
     background-color: #440e1b;
@@ -80,27 +114,25 @@ html {
 
 
 /* Top Info Section Styling */
-#info {
-    background-color: #6D152B; /* Deep burgundy background for elegance */
+.info {
+    background-color: black; /* Deep burgundy background for elegance */
     color: var(--header-font); /* White text for contrast */
     text-align: center; /* Center-align the text */
+    text-transform: uppercase;
     border-top: 3px solid black; /* White accent border */
-    border-bottom: 3px solid black; /* White accent border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+    padding: 20px 58px;
 }
 
 /* Heading Styling */
-#info h2 {
+.info h2 {
+    color: var(--header-font);
     font-size: 1rem; /* Larger font size for prominence */
     font-family: 'Georgia', serif; /* Elegant serif font */
     font-weight: bold; /* Bold text for impact */
-    margin-bottom: 10px; /* Spacing below heading */
-    text-transform: uppercase; /* Make heading uppercase for emphasis */
-    letter-spacing: 2px; /* Add letter spacing for sophistication */
-    line-height: 1.2; /* Improve line height for readability */
 }
 
-#info h2 {
+.info h2 {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s ease-out forwards; /* Smooth fade-in effect */
