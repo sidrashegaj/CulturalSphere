@@ -42,13 +42,17 @@ if (isset($_GET['id'])) {
     $collectionId = intval($_GET['id']);
     try {
         $query = "SELECT ci.item_type, ci.item_id, 
-                         f.title AS film_title, 
-                         b.title AS book_title 
-                  FROM collection_items ci
-                  LEFT JOIN films f ON ci.item_id = f.id AND ci.item_type = 'film'
-                  LEFT JOIN books b ON ci.item_id = b.id AND ci.item_type = 'book'
-                  WHERE ci.collection_id = :collection_id
-                  AND ci.item_type IN ('film', 'book')";
+        f.title AS film_title, 
+        b.title AS book_title, 
+        b.cover_image AS book_cover_image,  
+        a.name AS art_name, 
+        a.image_path AS art_image_path
+ FROM collection_items ci
+ LEFT JOIN films f ON ci.item_id = f.id AND ci.item_type = 'film'
+ LEFT JOIN books b ON ci.item_id = b.id AND ci.item_type = 'book'
+ LEFT JOIN art a ON ci.item_id = a.id AND ci.item_type = 'art'
+ WHERE ci.collection_id = :collection_id";
+
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':collection_id', $collectionId, PDO::PARAM_INT);
