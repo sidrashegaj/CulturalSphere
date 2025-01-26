@@ -37,7 +37,7 @@ $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
                     <li class="nav-item" id="auth-section">
                         <?php if (isset($_SESSION['user_id'])): ?>
                             <div id="user-profile" class="d-flex align-items-center">
-                                <a href="<?php echo $base_path; ?>profile.php" class="nav-link d-flex align-items-center">
+                                <a href="<?php echo $base_path; ?>pages/collections.php" class="nav-link d-flex align-items-center">
                                     <i class="bi bi-person-circle text-light fs-4 me-2"></i>
                                     <span class="text-light">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
                                 </a>
