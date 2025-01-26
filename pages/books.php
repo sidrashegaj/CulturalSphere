@@ -20,35 +20,28 @@ try {
     <link rel="stylesheet" href="../css/pagesstyles.css">
     <script src="https://cdn.jsdelivr.net/npm/circletype@2.3.0/dist/circletype.min.js"></script> <!-- Add CircleType.js -->
     <style>
-        .circle-text {
-            position: absolute; 
-            top: 170px; 
-            left: 1100px; /* Center it horizontally */
-            transform: translate(-50%, -50%); /* Adjust for perfect centering */
-            font-family: Arial, sans-serif;
-            font-size: 28px;
-            color: white;
-            cursor: pointer;
-            animation: rotate 10s linear infinite; /* Rotate in a circular motion */
-            z-index: 10;
-            width: 450px; /* Diameter of the circle */
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .image-topleft {
+            top: 7%;
+            left: 1%;
+            width: 37%;
         }
 
-        @keyframes rotate {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
+        .image-bottomleft {
+            bottom: 7%;
+            left: 10%;
+            width: 37%;
         }
 
-        .circle-text:hover {
-            animation-duration: 12s; 
+        .image-bottomright {
+            bottom: 8%;
+            right: 13%;
+            width: 35%;
+        }
+
+        .image-topright {
+            top: 14%;
+            left: 39%;
+            width: 33%;
         }
     </style>
 </head>
@@ -64,17 +57,15 @@ try {
             </div>
             <div class="hero-circle">
                 <div id="circle-text" class="circle-text" onclick="scrollToCatalog()">
-                    <span>Literary Treasures</span>
+                    <span> Literary &#9675; Treasures &#9675;</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="info">
-        <div class="info-box">
-            <h2>In their inked lines, books carry not just words, but the shadows of 
-                their readers, the hopes of their writers, and the pulse of their time.</h2>
-        </div>
+    <section class="info">
+        <h2>In their inked lines, books carry not just words, but the shadows of 
+            their readers, the hopes of their writers, and the pulse of their time.</h2>
     </section>
 
     <main class="catalog" id="catalog-section">
