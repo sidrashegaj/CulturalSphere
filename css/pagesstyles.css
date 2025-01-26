@@ -217,4 +217,78 @@ html {
 .grid-item img {
     max-width: 100%;
     border-radius: 5px;
+}  .art-catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always display 3 cards per row */
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.art-card {
+    text-align: center;
+    background-color: #5b1928; /* Main card background color (cafe-like) */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure the card fits the grid cell */
+    max-width: 350px; /* Cap the maximum card size */
+    overflow: hidden;
+}
+
+.art-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.art-card .art-image-container {
+    width: 100%;
+    height: 250px; /* Fixed height for the image display */
+    background-color: #a63953; /* Fallback background color if image fails */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Ensure child div doesn't overflow */
+    position: relative;
+}
+
+.art-card .art-image-container .art-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+.art-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.art-card p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+}
+
+.art-card p:hover {
+    color: #a63953;
+}
+
+.art-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.art-card a:hover {
+    text-decoration: underline;
 }
