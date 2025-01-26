@@ -71,9 +71,9 @@ try {
     <main class="catalog" id="catalog-section">
     <?php if (!empty($books)): ?>
         <?php foreach ($books as $book): ?>
-            <div class="film"> <!-- Use the same class as 'film' for books -->
+            <div class="film"> 
                 <a href="itembook.php?id=<?php echo htmlspecialchars($book['id']); ?>">
-                    <img src="<?php echo !empty($book['cover_image']) ? htmlspecialchars($book['cover_image']) : '../images/The Iliad.jpeg'; ?>"
+                    <img src="<?php echo !empty($book['cover_image']) ? '../' . htmlspecialchars($book['cover_image']) : '../images/The Iliad.jpeg'; ?>"
                          alt="<?php echo htmlspecialchars($book['title']); ?>">
                     <p><?php echo htmlspecialchars($book['title']); ?></p>
                 </a>
