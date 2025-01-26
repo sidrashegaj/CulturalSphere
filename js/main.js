@@ -1,3 +1,25 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Apply CircleType.js effect
+    const circleText = document.getElementById("circle-text");
+    if (circleText) {
+        new CircleType(circleText); // Apply circular text layout
+
+        // Add click-to-scroll functionality
+        circleText.addEventListener("click", () => {
+            const catalogSection = document.getElementById("catalog-section");
+            if (catalogSection) {
+                catalogSection.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    }
+});
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Simulated user login state (set this dynamically in your app)
     const isLoggedIn = false; // Change this to true to test logged-in state

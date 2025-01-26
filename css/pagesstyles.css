@@ -3,37 +3,36 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 249, 228); /* Black background to match the hero section */
-    color: #f8f8f8; /* Light text color for contrast */
+    background-color: #a63953 !important; /* Match hero section */
+    color: #f8f8f8; /* Light text color */
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 html {
-    box-sizing: border-box; /* Include padding and border in width/height calculations */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 *, *::before, *::after {
-    box-sizing: inherit; /* Ensure consistent box-sizing */
+    box-sizing: inherit;
 }
 
-/* General styling for the hero section */
+/* Hero Section */
 .hero {
     background-color: #440e1b;
     color: white;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     position: relative;
-    overflow: hidden; /* Prevent any child overflow */
+    overflow: hidden;
 }
 
 .hero-content {
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: hidden; /* Prevent any child overflow */
 }
 
 .hero-images {
@@ -42,96 +41,78 @@ html {
     height: 100%;
 }
 
-/* Individual image styling and positioning */
-.image-topleft {
+.image-topleft,
+.image-bottomleft,
+.image-bottomright,
+.image-topright {
     position: absolute;
-    top: 6%; /* Position slightly down */
-    left: 2%; /* Align to the left */
-    width: 30%; /* Set width relative to the viewport */
     border-radius: 5px;
     object-fit: cover;
-    z-index: 3; /* Layer this image on top */
+}
+
+.image-topleft {
+    top: 6%;
+    left: 2%;
+    width: 30%;
 }
 
 .image-bottomleft {
-    position: absolute;
-    bottom: 10%; /* Lower the dog image */
-    left: 10%; /* Offset to the right of the tablet image */
-    width: 35%; /* Larger width for the second image */
-    border-radius: 5px;
-    object-fit: cover;
-    z-index: 2; /* Place below the first image */
+    bottom: 10%;
+    left: 10%;
+    width: 35%;
 }
 
 .image-bottomright {
-    position: absolute;
-    bottom: 8%; /* Slightly higher */
-    right: 20%; /* Align to the right */
-    width: 30%; /* Medium width */
-    border-radius: 5px;
-    object-fit: cover;
-    z-index: 1; /* Bring to the top layer */
+    bottom: 8%;
+    right: 20%;
+    width: 30%;
 }
 
 .image-topright {
-    position: absolute;
-    top: 12%; /* Align near the bottom */
-    left: 35%; /* Center horizontally */
-    width: 32%; /* Medium width */
-    border-radius: 5px;
-    object-fit: cover;
-    z-index: 1; /* Place behind all other images */
+    top: 12%;
+    left: 35%;
+    width: 32%;
 }
 
 .hero-images img:hover {
     transform: scale(1.05);
 }
 
-/* Animation for rotating text */
-@keyframes rotate-circle {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
 /* Catalog Section */
 .catalog {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Updated to 4 items per row */
-    gap: 20px; /* Equal spacing between grid items */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column size dynamically */
+    gap: 20px;
     padding: 20px;
-    max-width: 1200px; /* Centered content width */
-    margin: 0 auto; /* Center the grid on the screen */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Book Cards (same as film) */
 .film {
     text-align: center;
-    background-color: white;
+    background-color: #440e1b;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     transition: transform 0.2s;
-    width: 160px; /* Slightly wider than the image for padding */
-    margin: 0 auto; /* Center the box in the grid */
+    width: 160px; /* Fixed width for consistency */
+    margin: 0 auto;
 }
 
 .film img {
-    width: 100%; /* Ensures the image fills its container */
-    height: auto; /* Maintains the aspect ratio */
-    max-width: 150px; /* Limits the width to match the proportions */
-    max-height: 225px; /* Adjusts the height for vertical alignment */
+    width: 100%;
+    height: auto;
+    max-width: 150px; /* Same dimensions as films */
+    max-height: 225px;
     border-radius: 5px;
-    object-fit: cover; /* Ensures the image scales without distortion */
+    object-fit: cover;
 }
 
 .film p {
     margin-top: 10px;
     font-size: 16px;
-    color: #333;
+    color: white;
 }
 
 .film a {
@@ -141,12 +122,4 @@ html {
 
 .film:hover {
     transform: scale(1.05);
-}
-
-/* Footer Section */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
 }
