@@ -1,5 +1,8 @@
 <?php 
-session_start();
+// Check if a session has already been started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Determine the base path dynamically
 $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
@@ -16,7 +19,6 @@ $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
     <link rel="stylesheet" href="<?php echo $base_path; ?>css/navbar.css">
     <link rel="stylesheet" href="<?php echo $base_path; ?>css/style.css">
     <link rel="stylesheet" href="<?php echo $base_path; ?>css/pagestyles.css">
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-black py-3">
@@ -31,12 +33,12 @@ $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
                     <li class="nav-item"><a class="nav-link" href="<?php echo $base_path; ?>pages/films.php">Films</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo $base_path; ?>pages/books.php">Books</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo $base_path; ?>pages/art.php">Art</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo $base_path; ?>testimonials.html">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo $base_path; ?>pages/collections.php">Collections</a></li>
                     <li class="nav-item" id="auth-section">
                         <?php if (isset($_SESSION['user_id'])): ?>
                             <div id="user-profile" class="d-flex align-items-center">
                                 <a href="<?php echo $base_path; ?>profile.php" class="nav-link d-flex align-items-center">
-                                <i class="bi bi-person-circle text-light fs-4 me-2"></i>
+                                    <i class="bi bi-person-circle text-light fs-4 me-2"></i>
                                     <span class="text-light">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
                                 </a>
                                 <a class="btn btn-outline ms-2" href="<?php echo $base_path; ?>pages/logout.php">Logout</a>
@@ -53,3 +55,4 @@ $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
         </div>
     </nav>
 </body>
+</html>

@@ -1,0 +1,87 @@
+<?php
+include '../db.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Unauthorized. Please log in.']);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userId = $_SESSION['user_id'];
+    $name = trim($_POST['name']);
+    $description = trim($_POST['description']);
+
+    if (empty($name)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Collection name is required.']);
+        exit;
+    }
+
+    try {
+        $query = "INSERT INTO collections (user_id, name, description) VALUES (:user_id, :name, :description)";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->execute();
+
+        echo json_encode(['message' => 'Collection created successfully']);
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Error creating collection: ' . $e->getMessage()]);
+    }
+    exit;
+}
+
+if (isset($_GET['id'])) {
+    $collectionId = intval($_GET['id']);
+    try {
+        $query = "SELECT ci.item_type, ci.item_id, 
+                         f.title AS film_title, 
+                         b.title AS book_title 
+                  FROM collection_items ci
+                  LEFT JOIN films f ON ci.item_id = f.id AND ci.item_type = 'film'
+                  LEFT JOIN books b ON ci.item_id = b.id AND ci.item_type = 'book'
+                  WHERE ci.collection_id = :collection_id
+                  AND ci.item_type IN ('film', 'book')";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':collection_id', $collectionId, PDO::PARAM_INT);
+        $stmt->execute();
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!$items) {
+            http_response_code(404);
+            echo json_encode(['error' => 'No items found for this collection.']);
+            exit;
+        }
+
+        echo json_encode($items);
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
+    }
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $userId = $_SESSION['user_id'];
+    try {
+        $query = "SELECT * FROM collections WHERE user_id = :user_id ORDER BY created_at DESC";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $collections = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode($collections);
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Error fetching collections: ' . $e->getMessage()]);
+    }
+}
+?>
