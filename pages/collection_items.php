@@ -87,11 +87,6 @@
         const urlParams = new URLSearchParams(window.location.search);
         const collectionId = urlParams.get('collection_id');
 
-        // Function to normalize file names
-        function normalizeFileName(name) {
-            return encodeURIComponent(name.trim());
-        }
-
         async function fetchCollectionItems() {
             try {
                 const response = await fetch(`../api/collections.php?id=${collectionId}`, {
@@ -106,19 +101,25 @@
 
                 if (items.length > 0) {
                     container.innerHTML = items.map(item => {
-                        const title = item.item_type === 'film' ? item.film_title : item.book_title;
-                        const normalizedTitle = normalizeFileName(title);
-                        const imagePath = `../images/${item.item_type}s/${normalizedTitle}.jpg`;
+                        let title, imagePath;
 
-                        console.log('Generated Image Path:', imagePath); // Debugging paths
+                        if (item.item_type === 'film') {
+                            title = `🎥 Film: ${item.film_title}`;
+                            imagePath = `../images/films/${encodeURIComponent(item.film_title)}.jpg`;
+                        } else if (item.item_type === 'book') {
+                            title = `📖 Book: ${item.book_title}`;
+                            imagePath = item.book_cover_image 
+                                ? `../${item.book_cover_image}` 
+                                : '../images/default-book.jpg';
+                        } else if (item.item_type === 'art') {
+                            title = `🖼️ Art: ${item.art_name}`;
+                            imagePath = `../${item.art_image_path}`;
+                        }
 
                         return `
                             <div class="grid-item">
-                                <img 
-                                    src="${imagePath}" 
-                                    alt="${title}" 
-                                    onerror="this.onerror=null; this.src='../images/default-image.jpg';">
-                                <p>${item.item_type === 'film' ? `🎥 Film: ${item.film_title}` : `📖 Book: ${item.book_title}`}</p>
+                                <img src="${imagePath}" alt="${title}" onerror="this.onerror=null; this.src='../images/default-image.jpg';">
+                                <p>${title}</p>
                             </div>
                         `;
                     }).join('');
