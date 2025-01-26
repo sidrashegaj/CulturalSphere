@@ -73,6 +73,13 @@ try {
         </div>
     </section>
 
+    <section id="info">
+        <div class="info-box">
+            <h2>Cinema took storytelling by the hand and made it dance; 
+                its frames turned whispers into thunder, reshaping how we see ourselves.</h2>
+        </div>
+    </section>
+
     <main class="catalog" id="catalog-section">
     <?php if (!empty($films)): ?>
         <?php foreach ($films as $film): ?>

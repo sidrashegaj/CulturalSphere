@@ -78,6 +78,43 @@ html {
     transform: scale(1.05);
 }
 
+
+/* Top Info Section Styling */
+#info {
+    background-color: #6D152B; /* Deep burgundy background for elegance */
+    color: var(--header-font); /* White text for contrast */
+    text-align: center; /* Center-align the text */
+    border-top: 3px solid black; /* White accent border */
+    border-bottom: 3px solid black; /* White accent border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+}
+
+/* Heading Styling */
+#info h2 {
+    font-size: 1rem; /* Larger font size for prominence */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-weight: bold; /* Bold text for impact */
+    margin-bottom: 10px; /* Spacing below heading */
+    text-transform: uppercase; /* Make heading uppercase for emphasis */
+    letter-spacing: 2px; /* Add letter spacing for sophistication */
+    line-height: 1.2; /* Improve line height for readability */
+}
+
+#info h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards; /* Smooth fade-in effect */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
 /* Catalog Section */
 .catalog {
     display: grid;

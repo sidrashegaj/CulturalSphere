@@ -70,6 +70,13 @@ try {
         </div>
     </section>
 
+    <section id="info">
+        <div class="info-box">
+            <h2>In their inked lines, books carry not just words, but the shadows of 
+                their readers, the hopes of their writers, and the pulse of their time.</h2>
+        </div>
+    </section>
+
     <main class="catalog" id="catalog-section">
     <?php if (!empty($books)): ?>
         <?php foreach ($books as $book): ?>

@@ -30,9 +30,18 @@
         <div class="content">
             <h1 class="display-3 fw-bold text-uppercase">Cultural Sphere</h1>
             <p class="lead mt-3">The beauty of the world lies in the diversity of its people and stories.</p>
-            <button class="btn text-dark mt-4 px-4 py-2" onclick="window.location.href='contact.html';">Discover</button>
+            <!-- Discover Button with Dropdown -->
+            <div class="dropdown">
+                <button class="btn text-dark mt-4 px-4 py-2">Explore</button>
+                <div class="dropdown-menu">
+                    <a href="pages/films.php">Cinematic Culture</a>
+                    <a href="pages/books.php">Literary Legacy</a>
+                    <a href="pages/art.php">Visual Symphonies</a>
+                </div>
+            </div>
         </div>
     </header>
+
     
     
 

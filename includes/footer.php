@@ -9,12 +9,15 @@
     <style>
         /* Footer Styles */
         .footer {
-            background-color: #1a1a1a;
+            background-color: black;
             color: #fff;
-            padding: 20px 10px; /* Reduced padding */
+            padding: 40px 0 20px 0; /* Reduced padding */
             font-size: 0.9rem; /* Reduced font size */
-            text-transform: uppercase;
             font-family: 'Franklin Gothic Book', serif;
+        }
+
+        .footer h6{
+            text-transform: uppercase;
         }
 
         .footer-brand {
@@ -61,7 +64,19 @@
             font-size: 0.8rem; /* Reduced font size */
             color: #b3b3b3;
             text-align: center;
-            margin-top: 15px; /* Reduced margin */
+            margin-top: 25px; /* Reduced margin */
+        }
+
+        .footer .row {
+            display: flex;
+            justify-content: space-between; /* Distribute columns evenly */
+            gap: 80px; /* Add space between columns */
+            align-items: flex-start;
+        }
+
+        .footer .col-md-4 {
+            flex: 1; /* Make columns take equal space */
+            margin: 20px; /* Reset default margin */
         }
 
         /* Responsive Styles */
@@ -99,9 +114,9 @@
                 <div class="col-md-4 mb-3">
                     <h6>Why Choose Us?</h6>
                     <div class="footer-features">
-                        <p><span>🌍</span> Connecting cultures through shared experiences</p>
-                        <p><span>📚</span> Curated collections of books and films</p>
-                        <p><span>🎭</span> Discover art and culture from around the world</p>
+                        <p><span>🌍</span>Connecting cultures through shared experiences</p>
+                        <p><span>📚</span>Curated collections of books and films</p>
+                        <p><span>🎭</span>Discover art and culture from around the world</p>
                     </div>
                 </div>
 
