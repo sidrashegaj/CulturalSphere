@@ -1,19 +1,4 @@
-<?php
-include 'db.php'; // Include your database connection file
 
-try {
-    // Fetch top 3 films by likes
-    $films = $conn->query("SELECT title, cover_image, likes FROM films ORDER BY likes DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
-
-    // Fetch top 3 books by likes
-    $books = $conn->query("SELECT title, cover_image, likes FROM books ORDER BY likes DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
-
-    // Fetch top 3 art pieces by likes
-    $art = $conn->query("SELECT title, cover_image, likes FROM art ORDER BY likes DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Error fetching data: " . $e->getMessage());
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
