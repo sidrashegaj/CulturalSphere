@@ -14,6 +14,7 @@
             padding: 40px 0 20px 0; /* Reduced padding */
             font-size: 0.9rem; /* Reduced font size */
             font-family: 'Franklin Gothic Book', serif;
+            z-index: 3; /* Place it above the overlay and other content */
         }
 
         .footer h6{

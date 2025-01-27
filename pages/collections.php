@@ -12,8 +12,29 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            back
             background-color: rgba(178, 91, 78, 0.89);
         }
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Keep the video behind other content */
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55); /* Black with 50% transparency */
+            z-index: -1; /* Ensure it's between the video and content */
+        }
+
 
         #collections-container {
             position: relative;
@@ -24,6 +45,7 @@
             text-align: center;
             color: var(--header-font);
             overflow: hidden; /* Prevents video overflow */
+            z-index: 1; /* Place the content above the overlay */
         }
 
         #collections-container h1 {
@@ -31,6 +53,7 @@
             font-family: "Cinzel", serif;
             font-weight: 400;
             text-transform: uppercase;
+            margin-top: 10%;
             position: relative;
             animation: slow-fade-loop 10s linear infinite;
             color: var(--header-font);
@@ -183,7 +206,7 @@
 
         .collection-card {
             background: var(--header-font);
-            border-radius: 15px;
+            border-radius: 25px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -216,21 +239,19 @@
             color: white;
             border: none;
             border-radius: 10px;
-            padding: 12px 20px;
-            margin: 10px 0 20px;
+            padding: 12px;
+            margin: 8px 0 15px;
             font-size: 1em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 80%;
+            width: 65%;
         }
 
         .collection-card button:hover {
             background: linear-gradient(135deg, #8B213F, #6D152B);
             transform: scale(1.05);
         }
-
-
 
         /* Animation */
         @keyframes slow-fade-loop {
@@ -259,6 +280,11 @@
     </style>
 </head>
 <body>
+    <video autoplay muted loop class="bg-video">
+        <source src="../images/collectionsbackg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="bg-overlay"></div>
     <div id="collections-container">
         <h1 class="display-3 fw-bold text-uppercase">My Collections</h1>
         <p class="lead mt-3">Save your favorite cultural pieces to revisit and be inspired by them anytime.</p>
@@ -376,7 +402,6 @@
                 console.error(error);
             }
         }
-
     </script>
 
     <?php include '../includes/footer.php'; ?>
