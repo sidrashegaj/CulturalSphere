@@ -16,7 +16,6 @@
             font-family: 'Franklin Gothic Book', serif;
             z-index: 3; /* Place it above the overlay and other content */
         }
-
         .footer h6{
             text-transform: uppercase;
         }

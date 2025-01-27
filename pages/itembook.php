@@ -31,7 +31,6 @@ if (isset($_GET['id'])) {
 } else {
     die("Invalid book ID.");
 }
-
 try {
     // Fetch comments for the current book
     $commentsQuery = "SELECT c.comment, c.created_at, u.username 

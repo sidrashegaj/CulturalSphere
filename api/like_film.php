@@ -51,4 +51,5 @@ function getLikes($filmId, $conn) {
     $stmt->execute(['film_id' => $filmId]);
     return $stmt->fetchColumn();
 }
+
 ?>

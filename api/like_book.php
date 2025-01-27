@@ -61,4 +61,5 @@ function getLikeCount($bookId, $conn) {
     $stmt->execute(['book_id' => $bookId]);
     return $stmt->fetchColumn();
 }
+
 ?>
