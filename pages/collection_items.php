@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
+            background-color: var(--header-font);
             margin: 0;
             padding: 0;
         }
@@ -74,6 +74,7 @@
             font-size: 1rem;
             color: #555;
         }
+
     </style>
 </head>
 <body>
@@ -81,6 +82,7 @@
 
     <h1>Collection Items</h1>
     <button class="back-button" onclick="window.location.href='collections.php'">Back to Collections</button>
+
     <div id="items-container"></div>
 
     <script>
