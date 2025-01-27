@@ -52,8 +52,6 @@
         </div>
     </section>
 
-
-
     <section class="trending films">
         <div class="description-text">
             <h1>Cinema Picks</h1>
