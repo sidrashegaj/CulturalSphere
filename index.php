@@ -20,62 +20,84 @@
 
 <!-- Include Header -->
 <?php include 'includes/header.php'; ?>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Hero Section -->
-<header class="hero-section">
-    <video autoplay muted loop class="bg-video">
-        <source src="images/backgmain.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="content">
-        <h1 class="display-3 fw-bold text-uppercase">Cultural Sphere</h1>
-        <p class="lead mt-3">The beauty of the world lies in the diversity of its people and stories.</p>
-        <button class="btn text-dark mt-4 px-4 py-2" onclick="window.location.href='contact.html';">Discover</button>
-    </div>
-</header>
-
-<!-- Remaining Content -->
-<section id="info">
-    <div class="info-box">
-        <i class="bi bi-geo-alt"></i>
-        <h5>Address</h5>
-        <p>6724 13th Ave, Brooklyn, <br> NY 11219</p>
-    </div>
-    <div class="info-box">
-        <i class="bi bi-telephone"></i>
-        <h5>Phone</h5>
-        <p>+1-646-656-2002</p>
-    </div>
-    <div class="info-box">
-        <i class="bi bi-envelope"></i>
-        <h5>Email</h5>
-        <p>info@titaniumelectrical.us</p>
-    </div>
-    <div class="info-box">
-        <i class="bi bi-hand-thumbs-up"></i>
-        <h5>Connect</h5>
-        <div class="social-icons">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-twitter"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <video autoplay muted loop class="bg-video">
+            <source src="images/backgmain.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content">
+            <h1 class="display-3 fw-bold text-uppercase">Cultural Sphere</h1>
+            <p class="lead mt-3">The beauty of the world lies in the diversity of its people and stories.</p>
+            <!-- Discover Button with Dropdown -->
+            <div class="dropdown">
+                <button class="btn text-dark mt-4 px-4 py-2">Explore</button>
+                <div class="dropdown-menu">
+                    <a href="pages/films.php">Cinematic Culture</a>
+                    <a href="pages/books.php">Literary Legacy</a>
+                    <a href="pages/art.php">Visual Symphonies</a>
+                </div>
+            </div>
         </div>
+    </header>
+
+    <section id="info">
+        <div class="info-box">
+            <h1>Celebrate Culture</h1>
+            <h2>Top 3 Picks of the Day</h2>
+        </div>
+    </section>
+
+    <section class="trending films">
+    <div class="description-text">
+        <h1>Cinema Picks</h1>
+    </div>
+    <div class="card-wrap">
+        <?php foreach ($films as $film): ?>
+            <div class="card" style="background-image: url('../images/films/<?php echo $film['cover_image']; ?>'); background-size: cover; background-position: center;">
+                <div class="card-content">
+                    <h3><?php echo $film['title']; ?></h3>
+                    <p>Likes: <?php echo $film['likes']; ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </section>
 
-<!-- Other sections like about, testimonials, services remain unchanged -->
-
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-        <p class="mb-0">Titanium Electrical</p>
-        <p>Powering a Greener Tomorrow: Electrical Solutions for All Your Needs</p>
-        <small>©2023 by Titanium Electrical</small>
+<section class="trending books">
+    <div class="description-text">
+        <h1>Top Reads</h1>
     </div>
-</footer>
+    <div class="card-wrap">
+        <?php foreach ($books as $book): ?>
+            <div class="card" style="background-image: url('../images/books/<?php echo $book['cover_image']; ?>'); background-size: cover; background-position: center;">
+                <div class="card-content">
+                    <h3><?php echo $book['title']; ?></h3>
+                    <p>Likes: <?php echo $book['likes']; ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
 
-<script src="js/scripts.js"></script>
+<section class="trending art">
+    <div class="description-text">
+        <h1>Gallery Highlights</h1>
+    </div>
+    <div class="card-wrap">
+        <?php foreach ($art as $piece): ?>
+            <div class="card" style="background-image: url('../images/art/<?php echo $piece['image']; ?>'); background-size: cover; background-position: center;">
+                <div class="card-content">
+                    <h3><?php echo $piece['title']; ?></h3>
+                    <p>Likes: <?php echo $piece['likes']; ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+
+    <!-- Include Footer -->
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

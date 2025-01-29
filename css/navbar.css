@@ -1,0 +1,140 @@
+/* Style the scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+/* Style the track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #010101; /* Match your website background */
+}
+
+/* Style the scrollbar thumb (scroll handle) */
+::-webkit-scrollbar-thumb {
+    background: #6D152B; /* Match your website's accent color */
+    border-radius: 10px; /* Optional: rounded corners */
+}
+
+/* Style the scrollbar thumb when hovered */
+::-webkit-scrollbar-thumb:hover {
+    background: #591123; /* Darker or lighter shade for hover effect */
+}
+
+/* Style for the scrollbar buttons (if applicable) */
+::-webkit-scrollbar-button {
+    display: none; /* Hide buttons if not needed */
+}
+
+/* Optional: Style for scrollbar corner (when both scrollbars meet) */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Navbar button adjustments for small screens */
+@media (max-width: 768px) {
+    .navbar .d-flex {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center align them */
+        
+        gap: 10px; /* Add space between buttons */
+    }
+
+    .navbar .btn {
+        margin-top: 355px;
+        width: 100%; /* Make buttons full-width */
+    }
+}
+
+/* Optional: Improve spacing and styling for larger screens */
+@media (min-width: 769px) {
+    .navbar .d-flex .btn {
+        margin-left: 10px; /* Add spacing between buttons */
+    }
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: black; 
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center; /* Ensure vertical alignment of content */
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Book', serif; 
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Center text vertically */
+}
+
+.navbar span {
+    color: #6D152B;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center; /* Align nav items vertically */
+    gap: 15px; /* Add space between items */
+}
+
+.nav-item {
+    display: flex;
+    align-items: center; /* Align nav items vertically */
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Book', sans-serif;
+    text-transform: capitalize;
+    font-weight: 400; 
+    color: white;
+    margin-right: 0; /* Remove margin as gap is used */
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #6D152B; 
+}
+
+.btn-outline {
+    color: white !important; 
+    border: 1px solid #6D152B !important; 
+    background-color: #6D152B !important;
+    font-family: 'Franklin Gothic Book', serif !important;
+    font-size: 0.8rem!important;
+    font-weight: 400!important; 
+    padding: 8px 18px!important; 
+    text-transform: uppercase!important;
+    transition: all 0.3s ease!important;
+    border-radius: 15px!important;
+    display: flex!important;
+    align-items: center!important; 
+}
+
+.btn-outline:hover {
+    color: #ffffff !important; /* Black text on hover */
+    background-color: transparent!important; /* No background */
+    border: 1px solid #6D152B!important; /* Keep border gold */
+}
+
+/* Profile Icon Styling */
+#user-profile img {
+    border: 2px solid #61714D; /* Match gold color */
+    padding: 2px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#user-profile img:hover {
+    transform: scale(1.1);
+}
+
+.d-none {
+    display: none !important;
+}

@@ -1,3 +1,26 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Apply CircleType.js effect
+    const circleText = document.getElementById("circle-text");
+    if (circleText) {
+        new CircleType(circleText); // Apply circular text layout
+
+        // Add click-to-scroll functionality
+        circleText.addEventListener("click", () => {
+            const catalogSection = document.getElementById("catalog-section");
+            if (catalogSection) {
+                catalogSection.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    }
+});
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Simulated user login state (set this dynamically in your app)
     const isLoggedIn = false; // Change this to true to test logged-in state
@@ -59,52 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(style);
     }
 
-    // Initialize EmailJS with Public Key
-    emailjs.init('9RLH0pscuP4QDiA9A');
-
-    // Handle form submission logic for all forms
-    const handleFormSubmission = (formId, successMessageId, serviceId, templateId) => {
-        const form = document.getElementById(formId);
-        const successMessage = document.getElementById(successMessageId);
-
-        if (form && successMessage) {
-            form.addEventListener('submit', (event) => {
-                event.preventDefault(); // Prevent default form submission
-
-                // Validate the form
-                if (!form.checkValidity()) {
-                    form.classList.add('was-validated');
-                    return;
-                }
-
-                // Send email using EmailJS
-                emailjs
-                    .sendForm(serviceId, templateId, form)
-                    .then(() => {
-                        // Show success message
-                        successMessage.textContent = 'Thanks for submitting! We’ll get back to you soon.';
-                        successMessage.classList.remove('d-none');
-                        successMessage.classList.add('text-success');
-
-                        // Reset the form
-                        form.reset();
-                        form.classList.remove('was-validated');
-
-                        // Hide success message after 3 seconds
-                        setTimeout(() => {
-                            successMessage.classList.add('d-none');
-                        }, 3000);
-                    })
-                    .catch((error) => {
-                        console.error('Error sending email:', error);
-                        alert('Failed to send the email. Please try again later.');
-                    });
-            });
-        }
-    };
-
-    // Apply handlers to the forms
-    handleFormSubmission('quote-form', 'success-message', 'service_i3xh8uk', 'template_ygckk7h');
-    handleFormSubmission('rate-us-form', 'success-message', 'service_i3xh8uk', 'template_ygckk7h');
-    handleFormSubmission('contactForm', 'success-message', 'service_i3xh8uk', 'template_ygckk7h');
+  
 });

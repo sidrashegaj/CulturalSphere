@@ -1,3 +1,7 @@
+:root {
+    --header-font: #fff6ef;
+}
+
 /* General Reset */
 body, html {
     margin: 0;
@@ -5,158 +9,20 @@ body, html {
     box-sizing: border-box;
     overflow-x: hidden;
 }
+
+body{
+    background-color: #a639526a; /*NGJYRA E BACKGROUNDIT MBAS TRENDING SECTIONS*/
+}
+
 section {
     padding: 20px;
 }
 #success-message{
     font-family: 'Georgia', serif;
     color: #000 !important;
-
 }
 #rate-success-message{
     font-family: 'Georgia', serif;
-
-}
-/* Style the scrollbar */
-::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
-}
-
-/* Style the track (background of the scrollbar) */
-::-webkit-scrollbar-track {
-    background: #010101; /* Match your website background */
-}
-
-/* Style the scrollbar thumb (scroll handle) */
-::-webkit-scrollbar-thumb {
-    background: #6D152B; /* Match your website's accent color */
-    border-radius: 10px; /* Optional: rounded corners */
-}
-
-/* Style the scrollbar thumb when hovered */
-::-webkit-scrollbar-thumb:hover {
-    background: #591123; /* Darker or lighter shade for hover effect */
-}
-
-/* Style for the scrollbar buttons (if applicable) */
-::-webkit-scrollbar-button {
-    display: none; /* Hide buttons if not needed */
-}
-
-/* Optional: Style for scrollbar corner (when both scrollbars meet) */
-::-webkit-scrollbar-corner {
-    background: transparent;
-}
-
-/* Navbar button adjustments for small screens */
-@media (max-width: 768px) {
-    .navbar .d-flex {
-        flex-direction: column; /* Stack buttons vertically */
-        align-items: center; /* Center align them */
-        
-        gap: 10px; /* Add space between buttons */
-    }
-
-    .navbar .btn {
-        margin-top: 355px;
-        width: 100%; /* Make buttons full-width */
-    }
-}
-
-/* Optional: Improve spacing and styling for larger screens */
-@media (min-width: 769px) {
-    .navbar .d-flex .btn {
-        margin-left: 10px; /* Add spacing between buttons */
-    }
-}
-
-
-/* Navbar Styles */
-.navbar {
-    background-color: black; 
-    padding: 0.5rem 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky; 
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center; /* Ensure vertical alignment of content */
-}
-
-.navbar-brand {
-    font-size: 1.2rem;
-    font-family: 'Franklin Gothic Book', serif; 
-    color: #ffffff;
-    text-transform: uppercase;
-    margin: 0 auto;
-    display: flex;
-    align-items: center; /* Center text vertically */
-}
-
-.navbar span {
-    color: #6D152B;
-}
-
-.navbar-nav {
-    display: flex;
-    align-items: center; /* Align nav items vertically */
-    gap: 15px; /* Add space between items */
-}
-
-.nav-item {
-    display: flex;
-    align-items: center; /* Align nav items vertically */
-}
-
-.nav-link {
-    font-size: 1rem;
-    font-family: 'Franklin Gothic Book', sans-serif;
-    text-transform: capitalize;
-    font-weight: 400; 
-    color: white;
-    margin-right: 0; /* Remove margin as gap is used */
-}
-
-.nav-link.active,
-.nav-link:hover {
-    color: #6D152B; 
-}
-
-.btn-outline {
-    color: white; 
-    border: 1px solid #6D152B; 
-    background-color: #6D152B;
-    font-family: 'Franklin Gothic Book', serif;
-    font-size: 0.8rem;
-    font-weight: 400; 
-    padding: 8px 18px; 
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    border-radius: 15px;
-    display: flex;
-    align-items: center; /* Align text vertically inside buttons */
-}
-
-.btn-outline:hover {
-    color: #ffffff !important; /* Black text on hover */
-    background-color: transparent; /* No background */
-    border: 1px solid #6D152B; /* Keep border gold */
-}
-
-/* Profile Icon Styling */
-#user-profile img {
-    border: 2px solid #61714D; /* Match gold color */
-    padding: 2px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-#user-profile img:hover {
-    transform: scale(1.1);
-}
-
-.d-none {
-    display: none !important;
 }
 
 /* Hero Section */
@@ -168,7 +34,7 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: var(--header-font);
     overflow: hidden; /* Prevents video overflow */
 }
 
@@ -186,7 +52,7 @@ section {
     position: fixed;
 }
 
-.hero-section::before {
+.hero-section::before, .video-bg2::before {
     content: "";
     position: absolute;
     top: 0;
@@ -217,13 +83,15 @@ section {
     font-family: 'Georgia', serif;
     font-style: italic;
     margin-bottom: 2rem;
+    color: var(--header-font);
 }
 
+/* Hero Section Button */
 .hero-section button {
-    background-color: white;
+    background-color: var(--header-font);
     border-radius: 17px;
     color: black !important;
-    border: 1px solid white;
+    border: 1px solid var(--header-font);
     font-size: 1rem;
     font-style: italic;
     font-weight: 400;
@@ -235,8 +103,48 @@ section {
 .hero-section button:hover {
     color: black !important;
     border-color: black; 
-    background-color: white !important;
+    background-color: var(--header-font) !important;
 }
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Place below the button */
+    left: 50%; /* Position relative to the parent */
+    transform: translateX(-50%); /* Center the dropdown */
+    background-color: var(--header-font);
+    border: 1px solid black;
+    border-radius: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 180px;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f2d7d7;
+}
+
+/* Show menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 
 /* Animation */
 @keyframes slow-fade-loop {
@@ -262,897 +170,163 @@ section {
 }
 
 
-
-/* Top Info Section */
+/* Top Info Section Styling */
 #info {
-    padding: 40px 0; /* Add spacing for a larger section */
-    background-color: #61714D; /* Golden background color */
+    background-color: #6D152B; /* Deep burgundy background for elegance */
+    color: var(--header-font); /* White text for contrast */
+    text-align: center; /* Center-align the text */
+    border-top: 3px solid black; /* White accent border */
+    border-bottom: 3px solid black; /* White accent border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+}
+
+/* Heading Styling */
+#info h1 {
+    font-size: 2.5rem; /* Larger font size for prominence */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-weight: bold; /* Bold text for impact */
+    text-transform: uppercase; /* Make heading uppercase for emphasis */
+    letter-spacing: 2px; /* Add letter spacing for sophistication */
+    line-height: 1.2; /* Improve line height for readability */
+}
+
+/* Heading Styling */
+#info h2 {
+    font-size: 1rem; /* Larger font size for prominence */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-weight: bold; /* Bold text for impact */
+    margin-bottom: 10px; /* Spacing below heading */
+    text-transform: uppercase; /* Make heading uppercase for emphasis */
+    letter-spacing: 2px; /* Add letter spacing for sophistication */
+    line-height: 1.2; /* Improve line height for readability */
+}
+
+#info h1, #info h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards; /* Smooth fade-in effect */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Trending Section Styling */
+.trending {
+    position: relative; /* Ensure pseudo-element is positioned relative to the section */
     display: flex;
-    justify-content: space-around; /* Evenly space the columns */
-    align-items: center; /* Center content vertically */
-    border-top: 3px solid black; /* Top border */
-    border-bottom: 3px solid black; /* Bottom border */
-}
-
-#info .info-box {
-    text-align: center;
-    flex: 1; /* Equal width for all boxes */
-    padding: 20px; /* Padding inside each box */
-    border-left: 2px solid black; /* Add left border */
-}
-
-#info .info-box:first-child {
-    border-left: none; /* Remove border for the first box */
-}
-
-#info i {
-    font-size: 2rem; /* Increase icon size */
-    color: #000; /* Icon color */
-    margin-bottom: 10px; /* Add spacing below the icon */
-}
-
-#info h5 {
-    font-size: 1.2rem;
-    margin: 10px 0; /* Add spacing for titles */
-    font-family: 'Georgia', serif;
-    color: black; /* Black text for titles */
-}
-
-#info p {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: black;
-    margin: 5px 0 0; /* Slight spacing adjustments */
-}
-
-#info a {
-    color: #000;
-    font-size: 1.5rem;
-    display: inline-block; /* Ensure proper alignment */
-    margin-top: 10px; /* Add spacing above icons */
-    transition: color 0.3s ease;
-}
-
-#info a:hover {
-    color: #333; /* Darker hover color */
-}
-
-/* Social Media Links */
-#info .social-icons a {
-    font-size: 1.2rem;
-    margin: 0 10px; /* Add spacing between icons */
-    color: #000; /* Default color */
-}
-
-#info .social-icons a:hover {
-    color: #333; /* Change color on hover */
-}
-
-/* Learn About Our Business Section */
-#about-business {
-    padding: 60px 0;
-    background-color: #000; /* Black background */
-    color: #fff;
-}
-
-#about-business h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-family: 'Franklin Gothic Medium', serif;
-}
-
-#about-business p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #ccc;
-}
-
-#about-business img {
-    max-width: 100%;
-    border-radius: 0% !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-/* Testimonials Section */
-/* Testimonials Section */
-#testimonials {
-    background-color: #61714D;
-    padding: 2rem 0;
-    text-align: center;
-}
-
-#testimonials h2 {
-    font-family: 'Franklin Gothic Medium', serif;
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: #ffffff;
-}
-
-.testimonial-card {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    border: none;
-    height: 100%;
-    overflow: hidden;
-    color: white;
-    border-radius: 10px;
-}
-
-.testimonial-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
-    z-index: 1;
-}
-
-.testimonial-card .card-body {
-    position: relative;
-    z-index: 2; /* Place the content above the overlay */
-    padding: 2rem;
-    text-align: left;
-}
-
-.testimonial-card blockquote {
-    font-family: 'Georgia', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: white;
-}
-
-.testimonial-card footer {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    font-style: normal;
-    color: #f9f9f9;
-}
-/* Testimonial Card Styles */
-.card {
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 350px;
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding: 20px 0; /* Matches the spacing of other sections */
+    border-radius: 100px; /* Rounded edges for the section */
+    margin: 15px auto; /* Center and add spacing between sections */
+    width: 98%; /* Responsive width for all devices */
+    max-width: 1200px; /* Limit the width on larger screens */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures border-radius is visible */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents repetition of the image */
 }
 
-.card-body {
-    padding: 20px;
-    height: 100%;
-    text-align: center;
-}
 
-.card h5 {
-    font-size: 1.2rem;
-    color: #fff;
-}
-
-.card p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #fff;
-}
-
-.card blockquote {
-    font-style: italic;
-    color: #fff;
-}
-
-.card-body::before {
+/* Black Overlay */
+.trending::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+    z-index: 1; /* Ensure the overlay sits above the background */
+    border-radius: 100px; /* Match the section's rounded corners */
+    pointer-events: none; /* Allow interaction with elements below the overlay */
 }
 
-
-#services {
-    background-color: #000000;
-    overflow: hidden;
+/* Content Above Overlay */
+.trending > .description-text,
+.trending > .card-wrap {
+    position: relative; /* Ensure content sits above the overlay */
+    z-index: 2;
 }
 
-#services .row {
-    margin-bottom: 2rem;
+/* Section-Specific Backgrounds */
+.trending.films {
+    background-image: url('../images/films/sectionfilms.jpg'); /* Cinema background image */
+}
+
+.trending.books {
+    background-image: url('../images/books/sectionbooks.jpg'); /* Books background image */
+}
+
+.trending.art {
+    background-image: url('../images/art/sectionart.jpg'); /* Art background image */
+}
+
+/* Section Title Styling */
+.trending > .description-text h1 {
+    margin: 30px 0;
+    font-size: 2rem;
+    color: var(--header-font); /* White text for contrast */
+    text-align: center;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+}
+
+/* Card Wrapper */
+.card-wrap {
     position: relative;
-}
-
-#services img {
-    width: 150%;
-    height: auto;
-    border-radius: 0%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-#services .card-overlay {
-    position:absolute;
-    top: 50%; 
-    left: 20%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
-    color: white !important;
-    margin-left:60%;
-    padding-top: 2% ;
-    padding-bottom: 2% ;
-    padding-left: 15% ;
-    padding-right: 15% ;
-    max-width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    text-align: center;
-    border-radius: 0%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    z-index: 2;
-}
-
-
-#services .card-overlay h3 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #61714D;
+    width: 300px; /* Fixed width to ensure consistent layout */
+    height: 400px; /* Fixed height for cards */
     cursor: pointer;
-    width: calc(100% - 20px);
-
+    border-radius: 100px; /* Rounded corners for the container */
 }
 
-#services .card-overlay p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: white;
-    font-family: 'Georgia', serif;
-    font-style: italic;
-
-}
-
-#services .modal-content {
+/* Individual Cards */
+.card {
+    position: absolute;
+    width: 80%; /* Size of each card relative to the card wrapper */
+    height: 80%;
     background-color: white;
-    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-#services .modal-body {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: black;
+/* Bottom Card */
+.card.bottom {
+    transform: translateX(-20px) rotateZ(-8deg);
+    z-index: 1;
 }
 
-#services .btn-dark {
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    transition: all 0.3s ease;
-}
-
-#services .btn-dark:hover {
-    background-color: #61714D;
-    color: black;
-    transform: scale(1.05);
-}
-#services button {
-    background-color: transparent;
-    border-radius: 0%;
-    color: white !important;
-    border: 1px solid white;
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 400;
-    padding: 10px 20px;
-    text-transform: capitalize;
+/* Middle Card */
+.card {
+    transform: translateX(0) rotateZ(-4deg);
     z-index: 2;
-    cursor: pointer;
-    width:auto;
-    margin-left: 45%;
 }
 
-#services button:hover {
-    color: black !important;
-    border-color: black; /* Match text color */
-    background-color: white !important;
-
-}
-#services img,
-#about-business img,
-.image-overlay-wrapper img {
-    max-width: 100%;
-    height: auto;
-}
-
-.info-box,
-.testimonial-card {
-    max-width: 90%;
-    margin: 0 auto;
-}
-
-/* All Services Section */
-#all-services h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    font-family: 'Franklin Gothic Medium', serif;
-}
-
-#all-services h5 {
-    font-size: 1rem;
-    margin-top: 15px;
-    font-weight: 500;
-}
-
-#all-services i {
-    font-size: 2.5rem;
-}
-
-/* Expert Understanding Section */
-#expert-understanding {
-    padding: 60px 0;
-    color: #fff;
-}
-
-#expert-understanding img {
-    border-radius: 0%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-#expert-understanding h2 {
-    font-size: 2.5rem;
-    
-}
-#expert-understanding h3 {
-    font-size: 1rem;
-    font-style: italic;
-    font-family: Georgia,  serif;
-}
-
-#expert-understanding p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-top: 20px;
-}
-
-#quote-form input,
-#quote-form textarea {
-    font-size: 1rem;
-    font-family: 'Arial', sans-serif;
-    outline: none;
-    box-shadow: none;
-    border-width: 0 0 2px 0;
-    border-color: #000;
-    transition: border-color 0.3s ease;
-}
-
-#quote-form input:focus,
-#quote-form textarea:focus {
-    border-color: #61714D;
-}
-
-#quote-form button {
-    background-color: #000;
-    color: white;
-    font-weight: bold;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#quote-form button:hover {
-    background-color: #61714D;
-    transform: scale(1.05);
-}
-
-.invalid-feedback {
-    font-size: 0.9rem;
-    color: red;
-}
-
-#success-message {
-    font-size: 1.2rem;
-}
-
-
-.invalid-feedback {
-    font-size: 0.9rem;
-    color: red;
-}
-
-/* About Section */
-#about {
-    padding: 60px 0;
-    background-color: #fff; /* Light background for text contrast */
-}
-.image-overlay-wrapper {
-    position: relative; /* Allows positioning of overlay relative to this container */
-}
-
-.image-overlay-wrapper img {
-    width: 100%;
-    display: block;
-}
-
-.card-overlay {
-    position: absolute; /* Positions the overlay relative to the parent */
-    top: 0;
-    left: 60% !important;
-    border: 2px solid white !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), /* Subtle shadow for depth */
-                inset 0 1px 2px rgba(255, 255, 255, 0.5);    width: 100% !important ;
-    height: 70%;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.image-overlay-wrapper:hover .card-overlay {
-    opacity: 1; /* Show the overlay on hover */
-}
-
-#about h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif;
-    text-align: center;
-}
-
-#about p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
-    text-align: center;
-}
-
-#about .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#about .text-section {
-    flex: 1;
-    padding-right: 20px;
-}
-
-#about .image-section {
-    flex: 1;
-}
-
-#about img {
-    width: 100%; /* Make the image fill the container */
-    height: 100%; /* Adjust height to match */
-    object-fit: cover; /* Ensure the image covers the container */
-    border-radius: 0%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-
-
-/* Footer */
-footer {
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 1rem;
-}
-
-footer small {
-    font-size: 0.8rem;
-    color: #ccc;
-}
-/* Contact Section */
-#contact {
-    background-color: #fff;
-}
-
-#contact h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-#contact .form-label {
-    margin-top: 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-#contact .form-label:hover{
-    border: 3px bold black;
-}
-
-#contact ul {
-    padding: 0;
-    list-style: none;
-}
-
-#contact li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    color: #333;
-    font-family: Georgia,  serif;
-    font-style: italic;
-}
-
-#contact i {
-    color: #000;
-}
-
-#contact a {
-    color: #000;
-    transition: color 0.3s;
-}
-
-#contact a:hover {
-    color: #61714D;
-}
-
-#contact .btn {
-    background-color: #555;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-}
-
-#contact .btn:hover {
-    background-color: #333;
-    transform: scale(1.05);
-}
-
-
-/* Services Section */
-#services {
-    background-color: #fff;
-    padding: 60px 0;
-}
-
-#services h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-#services p {
-    font-size: 1rem;
-    color: #6c757d;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-style: italic;
-}
-
-/* Service Details Section */
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-.services h2{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 3rem;
-}
-.services p{
-    font-family: Georgia, serif;
-    font-style: italic;
-}
-.services-grid div {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-}
-
-.services-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-h5 {
-    font-weight: bold;
-    margin-top: 20%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-style: italic;
-}
-
-.services-grid p {
-    font-size: 1rem;
-    color: #333;
-    margin-top: 10%;
-    font-family: 'Franklin Gothic Medium' sans-serif;
-}
-
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: 1fr; /* Stack columns for smaller screens */
-    }
-}
-
-/* Testimonials Section */
-.carousel-item {
-    text-align: center;
-    background-color: rgba(240, 240, 240, 0.9);
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-.carousel-inner{
-width: 50%;
-margin-left: 25%;
-}
-
-.carousel-item h5 {
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
-
-.carousel-item p.text-muted {
-    font-size: 0.9rem;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #8c8787;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-/* Rate Us Section */
-#rate-us h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-#rate-us form input,
-#rate-us form textarea {
-    border-radius: 5px;
-    padding: 10px;
-}
-
-#rate-us form button {
-    padding: 10px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.custom-input {
-    border: none;
-    border-bottom: 1px solid #000;
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 16px;
-}
-
-.custom-input:focus {
-    outline: none;
-    box-shadow: none;
-    border-bottom: 2px solid #000;
-}
-
-@media (max-width: 768px) {
-    html, body {
-        height: 100%; /* Ensure the html and body take full height */
-    }
-    #about {
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center content horizontally */
-        padding: 20px; /* Add padding for spacing */
-        min-height: 100vh; /* Ensure full height */
-        text-align: center; /* Center-align text for readability */
-    }
-    
-    #about h1 {
-        font-size: 2rem; /* Adjust font size for mobile */
-        margin-bottom: 15px; /* Add spacing below the heading */
-        color: #000; /* Ensure readability */
-    }#about .content {
-        flex-direction: column; /* Stack text and image vertically */
-        align-items: center; /* Center-align content */
-    }
-
-    #about .text-section {
-        padding-right: 0; /* Remove padding for vertical layout */
-        margin-bottom: 20px; /* Add spacing below the text */
-    }
-
-    #about .image-section {
-        margin-top: 20px; /* Add spacing above the image */
-        width: 100%; /* Ensure the image takes full width */
-    }
-
-    #about img {
-        width: 100%; /* Image adjusts to fit mobile width */
-        height: auto; /* Maintain aspect ratio */
-    }
-
-    #about > *:not(footer) {
-        flex-grow: 1; /* Push footer to the bottom */
-    }
-
-    footer {
-        margin-top: auto; /* Automatically place footer at the bottom */
-        padding: 20px;
-        text-align: center;
-        background-color: #000; /* Ensure consistent background color */
-        color: #fff;
-    }
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    .hero-section{
-        background-size: cover; /* Cover the entire section */
-        background-position: center; /* Center the background */
-        background-repeat: no-repeat; /* Prevent repeat of the background */
-        height: 100vh;
-        background-attachment: scroll;
-        position: sticky; /* Make the section sticky */
-    top: 0; /* Stick to the top of the viewport */
-    z-index: -1; /* Ensure it's behind content */
-    }
-
-    .hero-section p {
-        font-size: 1rem;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-    }
-    #info {
-        display: grid;
-        grid-template-columns: 1fr;  /* Two columns */
-        grid-template-rows: repeat(auto-fill, auto);  /* Two rows */
-        gap: 20px; /* Space between items */
-    }
-
-    #info .info-box {
-        text-align: center; /* Center the content inside each box */
-        padding: 10px; /* Adjust padding for smaller screens */
-        border: none; /* Remove unnecessary borders */
-    }
-    .hero-section p{
-        width: 70% !important;
-    }
-    #info i {
-        display: block; /* Icons on top */
-        font-size: 1.5rem; /* Adjust icon size */
-        margin-bottom: 10px; /* Space below the icon */
-    }
-
-    #info h5, #info p {
-        margin: 0;
-        font-size: 1rem; /* Adjust text size for better readability */
-    }
-
-    .social-icons {
-        grid-column: span 2; /* Make social icons span across both columns */
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-    }#services .image-overlay-wrapper {
-        position: relative; /* Enable positioning for the overlay */
-        display: grid; /* Use grid to manage image and overlay placement */
-        width: 100%; /* Full width of the container */
-        height: auto; /* Maintain aspect ratio of the image */
-        gap: 20% !important;
-    }
-    #about-business h2{
-text-align: center;
-    }
-    
-    #services img {
-        width: 100%; /* Full width for the image */
-        height: auto; /* Maintain aspect ratio */
-        display: block; /* Remove extra spaces under the image */
-    }
-    
-    #services .card-overlay {
-        position: absolute; /* Place overlay over the image */
-        bottom: 10px; /* Position slightly above the bottom of the image */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-135%); /* Adjust for exact centering */
-        background: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
-        color: white; /* Text color for readability */
-        padding: 15px; /* Padding for content inside the card */
-        text-align: center; /* Center-align text */
-        width: 80% !important; /* Adjust width relative to the container */
-        border-radius: 5px; /* Add rounded corners */
-        box-sizing: border-box; /* Include padding in width calculation */
-        
-    }
-    
-    #services .card-overlay h3 {
-        font-size: 1.5rem; /* Adjust for readability */
-        margin-bottom: 5px; /* Smaller margin for better spacing */
-        color: #61714D; /* Add accent color */
-    }
-    
-    #services .card-overlay p {
-        font-size: 1rem; /* Adjust font size for small screens */
-        line-height: 1.5; /* Improve readability */
-        margin: 0; /* Remove unnecessary margins */
-        text-align: center; /* Center-align content */
-    }
-    
-
-   /* Custom Button Styling */
-   #services .btn-custom {
-    display: inline-block; /* Keeps the button inline */
-    padding: 10px 20px; /* Adjust padding */
-    text-align: center; /* Centers the text */
-    border: 2px solid white; /* Add a border */
-    background-color: transparent; /* Transparent background */
-    color: white; /* Text color */
-    font-weight: bold; /* Bold text */
-    cursor: pointer; /* Pointer cursor */
-    transition: all 0.3s ease; /* Smooth hover effect */
-    text-decoration: none; /* Remove underline */
-    outline: none; /* Remove focus outline */
+/* Top Card */
+.card.top {
+    transform: translateX(1rem) rotateZ(8deg);
+    z-index: 3;
 }
 
-/* Hover and Focus Styles */
-#services .btn-custom:hover, .btn-custom:focus {
-    background-color: white; /* Change background on hover */
-    color: black; /* Change text color on hover */
-    outline: none; /* Remove focus outline */
+/* Hover Effects */
+.card-wrap:hover .card.bottom {
+    transform: translateX(-16rem) rotateZ(-12deg);
 }
 
-/* Center the button container */
-#services .text-center {
-    text-align: center; /* Centers all content inside */
+.card-wrap:hover .card {
+    transform: translateX(0) rotateZ(-6deg);
 }
 
-    .navbar .d-flex { 
-        display: none !important; /* Hide buttons */
-    }
-    .navbar-brand {
-        font-size: 1.5rem; /* Smaller font size for title */
-    }
-    .navbar-toggler {
-        margin-top: 10px;
-        margin-left: auto; /* Align toggle button to the right */
-    }
-    
-    #testimonials .row {
-        gap: 20px;
-    }
-   
-    #expert-understanding h2{
-        font-size: 30px;
-        color: #61714D;
-        font-weight: bold;
-        text-align: center;
-    }
-    #expert-understanding h3{
-        text-align: center;
-    }
-    #get-a-quote h2{
-        font-weight: bold;
-        font-size: 30px;
-        font-style: italic;
-    }
-    
+.card-wrap:hover .card.top {
+    transform: translateX(16rem) rotateZ(12deg);
 }
 

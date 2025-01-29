@@ -1,0 +1,294 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #a63953 !important; /* Match hero section */
+    color: #f8f8f8; /* Light text color */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Circle Text Styling */
+.circle-text {
+    position: absolute; /* Position within the hero section */
+    top: 25%; /* Adjust top placement */
+    left: 85%; /* Adjust left placement */
+    transform: translate(-50%, -50%); /* Center transform */
+    font-family: "Cinzel", serif;
+    text-transform: uppercase;
+    font-size: 2.1rem;
+    color: #fff6ef;
+    cursor: pointer;
+    animation: rotate 8s linear infinite; /* Rotating animation */
+    z-index: 10;
+    width: 350px; /* Diameter of the circle */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rotation Animation */
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.circle-text:hover {
+    animation-duration: 5s; /* Speed up rotation on hover */
+}
+
+/* Hero Section */
+.hero {
+    background-color: #440e1b;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.image-topleft,
+.image-bottomleft,
+.image-bottomright,
+.image-topright {
+    position: absolute;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.image-topleft {
+    top: 6%;
+    left: 2%;
+    width: 30%;
+}
+
+.image-bottomleft {
+    bottom: 10%;
+    left: 10%;
+    width: 35%;
+}
+
+.image-bottomright {
+    bottom: 8%;
+    right: 20%;
+    width: 30%;
+}
+
+.image-topright {
+    top: 12%;
+    left: 35%;
+    width: 32%;
+}
+
+.hero-images img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Top Info Section Styling */
+.info {
+    background-color: black; /* Deep burgundy background for elegance */
+    color: var(--header-font); /* White text for contrast */
+    text-align: center; /* Center-align the text */
+    text-transform: uppercase;
+    border-top: 3px solid black; /* White accent border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+    padding: 20px 58px;
+}
+
+/* Heading Styling */
+.info h2 {
+    color: var(--header-font);
+    font-size: 1rem; /* Larger font size for prominence */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-weight: bold; /* Bold text for impact */
+}
+
+.info h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards; /* Smooth fade-in effect */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Catalog Section */
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column size dynamically */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Book Cards (same as film) */
+.film {
+    text-align: center;
+    background-color: #440e1b;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s;
+    width: 160px; /* Fixed width for consistency */
+    margin: 0 auto;
+}
+
+.film img {
+    width: 100%;
+    height: auto;
+    max-width: 150px; /* Same dimensions as films */
+    max-height: 225px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.film p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.film a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.film:hover {
+    transform: scale(1.05);
+}
+
+
+.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.grid-item img {
+    max-width: 100%;
+    border-radius: 5px;
+}  .art-catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always display 3 cards per row */
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.art-card {
+    text-align: center;
+    background-color: #5b1928; /* Main card background color (cafe-like) */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure the card fits the grid cell */
+    max-width: 350px; /* Cap the maximum card size */
+    overflow: hidden;
+}
+
+.art-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.art-card .art-image-container {
+    width: 100%;
+    height: 250px; /* Fixed height for the image display */
+    background-color: #a63953; /* Fallback background color if image fails */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Ensure child div doesn't overflow */
+    position: relative;
+}
+
+.art-card .art-image-container .art-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+.art-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.art-card p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+}
+
+.art-card p:hover {
+    color: #a63953;
+}
+
+.art-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.art-card a:hover {
+    text-decoration: underline;
+}
