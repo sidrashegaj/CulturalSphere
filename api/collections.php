@@ -42,13 +42,17 @@ if (isset($_GET['id'])) {
     $collectionId = intval($_GET['id']);
     try {
         $query = "SELECT ci.item_type, ci.item_id, 
-                         f.title AS film_title, 
-                         b.title AS book_title 
-                  FROM collection_items ci
-                  LEFT JOIN films f ON ci.item_id = f.id AND ci.item_type = 'film'
-                  LEFT JOIN books b ON ci.item_id = b.id AND ci.item_type = 'book'
-                  WHERE ci.collection_id = :collection_id
-                  AND ci.item_type IN ('film', 'book')";
+        f.title AS film_title, 
+        b.title AS book_title, 
+        b.cover_image AS book_cover_image,  
+        a.name AS art_name, 
+        a.image_path AS art_image_path
+ FROM collection_items ci
+ LEFT JOIN films f ON ci.item_id = f.id AND ci.item_type = 'film'
+ LEFT JOIN books b ON ci.item_id = b.id AND ci.item_type = 'book'
+ LEFT JOIN art a ON ci.item_id = a.id AND ci.item_type = 'art'
+ WHERE ci.collection_id = :collection_id";
+
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':collection_id', $collectionId, PDO::PARAM_INT);
@@ -83,5 +87,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         http_response_code(500);
         echo json_encode(['error' => 'Error fetching collections: ' . $e->getMessage()]);
     }
+}
+
+
+$id = $_GET['id'] ?? null;
+
+// Log the ID for debugging
+error_log("Received DELETE request for collection ID: $id");
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $id = $_GET['id'] ?? null;
+
+    // Log the ID received
+    error_log("Received DELETE request for collection ID: $id");
+
+    if (!$id || !filter_var($id, FILTER_VALIDATE_INT)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Valid collection ID is required']);
+        exit;
+    }
+
+    try {
+        $conn->beginTransaction();
+
+        // Attempt to delete related items
+        $deleteItemsStmt = $conn->prepare("DELETE FROM collection_items WHERE collection_id = ?");
+        $deleteItemsStmt->execute([$id]);
+        error_log("Attempted to delete items for collection ID: $id");
+
+        // Delete the collection
+        $deleteCollectionStmt = $conn->prepare("DELETE FROM collections WHERE id = ?");
+        $deleteCollectionStmt->execute([$id]);
+
+        if ($deleteCollectionStmt->rowCount() > 0) {
+            $conn->commit();
+            http_response_code(200);
+            echo json_encode(['message' => 'Collection deleted successfully']);
+        } else {
+            // No collection found to delete
+            $conn->rollBack();
+            http_response_code(404);
+            echo json_encode(['error' => 'Collection not found']);
+        }
+    } catch (PDOException $e) {
+        $conn->rollBack();
+        error_log("Error deleting collection: " . $e->getMessage());
+        http_response_code(500);
+        echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
+    }
+    exit;
 }
 ?>
