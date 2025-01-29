@@ -6,6 +6,8 @@
     <title>Login - Cultural Sphere</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <?php include '../includes/header.php'; ?>
+
     <style>
         /* Update button colors */
         .btn-custom {
@@ -29,6 +31,7 @@
     </style>
 </head>
 <body>
+
     <div class="video-bg2">
         <video autoplay muted loop class="video-bg2">
             <source src="../images/backgmain.mp4" type="video/mp4">
