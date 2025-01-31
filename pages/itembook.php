@@ -49,10 +49,12 @@ try {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($book['title']); ?></title>
     <!-- Include Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -308,35 +310,55 @@ try {
                 console.error('Error fetching collections:', error);
             }
         }
+async function addToCollection() {
+    const collectionId = document.getElementById('dropdownMenuButton').getAttribute('data-id');
+    const bookId = <?php echo $bookId; ?>;
 
-        // Add the book to the selected collection
-        async function addToCollection() {
-            const collectionId = document.getElementById('dropdownMenuButton').getAttribute('data-id');
-            const bookId = <?php echo $bookId; ?>;
+    if (!collectionId) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please select a collection.',
+        });
+        return;
+    }
 
-            if (!collectionId) {
-                alert('Please select a collection.');
-                return;
-            }
+    try {
+        const response = await fetch('../api/add_to_collection.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                collection_id: collectionId,
+                item_type: 'book',
+                item_id: bookId
+            }),
+            credentials: 'include'
+        });
 
-            try {
-                const response = await fetch('../api/add_to_collection.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        collection_id: collectionId,
-                        item_type: 'book',
-                        item_id: bookId
-                    }),
-                    credentials: 'include'
-                });
+        const result = await response.json();
 
-                const result = await response.json();
-                alert(result.message || result.error);
-            } catch (error) {
-                console.error('Error adding to collection:', error);
-            }
+        if (result.error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed',
+                text: result.error,
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: result.message || 'Book successfully added to the collection.',
+            });
         }
+    } catch (error) {
+        console.error('Error adding to collection:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong. Please try again.',
+        });
+    }
+}
 
         // Fetch collections on page load
         fetchCollections();

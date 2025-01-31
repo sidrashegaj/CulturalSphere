@@ -56,10 +56,12 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($film['title']); ?></title>
     <!-- Include Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
@@ -320,32 +322,54 @@ try {
 
         // Add the book to the selected collection
         async function addToCollection() {
-            const collectionId = document.getElementById('dropdownMenuButton').getAttribute('data-id');
-            const filmId = <?php echo $filmId; ?>;
+    const collectionId = document.getElementById('dropdownMenuButton').getAttribute('data-id');
+    const filmId = <?php echo $filmId; ?>;
 
-            if (!collectionId) {
-                alert('Please select a collection.');
-                return;
-            }
+    if (!collectionId) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please select a collection.',
+        });
+        return;
+    }
 
-            try {
-                const response = await fetch('../api/add_to_collection.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        collection_id: collectionId,
-                        item_type: 'film',
-                        item_id: filmId
-                    }),
-                    credentials: 'include'
-                });
+    try {
+        const response = await fetch('../api/add_to_collection.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                collection_id: collectionId,
+                item_type: 'film',
+                item_id: filmId
+            }),
+            credentials: 'include'
+        });
 
-                const result = await response.json();
-                alert(result.message || result.error);
-            } catch (error) {
-                console.error('Error adding to collection:', error);
-            }
+        const result = await response.json();
+
+        if (result.error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed',
+                text: result.error,
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: result.message || 'Film successfully added to the collection.',
+            });
         }
+    } catch (error) {
+        console.error('Error adding to collection:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong. Please try again.',
+        });
+    }
+}
 
         // Fetch collections on page load
         fetchCollections();
