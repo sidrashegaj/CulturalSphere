@@ -277,56 +277,61 @@ section {
     text-align: center;
     font-family: 'Georgia', serif;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
-}
-
-/* Card Wrapper */
-.card-wrap {
+}.card-wrap {
     position: relative;
-    width: 300px; /* Fixed width to ensure consistent layout */
-    height: 400px; /* Fixed height for cards */
-    cursor: pointer;
-    border-radius: 100px; /* Rounded corners for the container */
+    width: 350px;
+    height: 500px;
+    margin: 0 auto;
+    perspective: 1500px; /* Adds a perspective effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Individual Cards */
 .card {
     position: absolute;
-    width: 80%; /* Size of each card relative to the card wrapper */
-    height: 80%;
+    width: 90%; /* Size of the cards relative to the wrapper */
+    height: 90%;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    backface-visibility: hidden; /* Hides the back of the card for smooth effect */
+    overflow: hidden;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    background-size: cover;
+    background-position: center;
 }
 
-/* Bottom Card */
+/* Position each card in the stack */
 .card.bottom {
-    transform: translateX(-20px) rotateZ(-8deg);
+    transform: translateX(-20px) rotateZ(-10deg);
     z-index: 1;
 }
 
-/* Middle Card */
-.card {
-    transform: translateX(0) rotateZ(-4deg);
+.card.middle {
+    transform: translateX(0) rotateZ(0);
     z-index: 2;
 }
 
-/* Top Card */
 .card.top {
-    transform: translateX(1rem) rotateZ(8deg);
+    transform: translateX(20px) rotateZ(10deg);
     z-index: 3;
 }
 
-/* Hover Effects */
+/* Hover effects for cards */
 .card-wrap:hover .card.bottom {
-    transform: translateX(-16rem) rotateZ(-12deg);
+    transform: translateX(-120px) rotateZ(-15deg);
 }
 
-.card-wrap:hover .card {
-    transform: translateX(0) rotateZ(-6deg);
+.card-wrap:hover .card.middle {
+    transform: translateX(0) rotateZ(0);
 }
 
 .card-wrap:hover .card.top {
-    transform: translateX(16rem) rotateZ(12deg);
+    transform: translateX(120px) rotateZ(15deg);
 }
-
