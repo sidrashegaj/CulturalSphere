@@ -1,13 +1,13 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
     try {
-        // Check if the user exists in the database
+        //check ifuser exists in database
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -15,13 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Verify the password
+            //verify password
             if (password_verify($password, $user['password'])) {
-                // Set session variables
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
 
-                // Redirect to index.php
+                //redirect to index.php
                 header("Location: ../index.php");
                 exit();
             } else {

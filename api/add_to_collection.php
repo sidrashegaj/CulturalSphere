@@ -2,7 +2,7 @@
 include '../db.php';
 session_start();
 
-// Ensure user is logged in
+//ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
     http_response_code(401);
     echo json_encode(['error' => 'Unauthorized. Please log in.']);
@@ -10,10 +10,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Decode JSON payload
+    //decode JSON payload
     $data = json_decode(file_get_contents('php://input'), true);
 
-    // Validate incoming data
+    //validate incoming data
     if (empty($data['collection_id']) || empty($data['item_type']) || empty($data['item_id'])) {
         http_response_code(400);
         echo json_encode(['error' => 'Invalid data. Please provide all required fields.']);

@@ -1,14 +1,14 @@
 <?php
-include '../db.php'; // Include your database connection
+include '../db.php';
 session_start();
 
-// Fetch film details based on ID
+//fetch film details based on ID
 if (isset($_GET['id'])) {
     $filmId = intval($_GET['id']);
-    $userId = $_SESSION['user_id'] ?? null; // Get logged-in user ID or null if not logged in
+    $userId = $_SESSION['user_id'] ?? null; //get logged-in user ID or null if not logged in
 
     try {
-        // Fetch all film details, including likes
+        //fetch all film details including likes
         $query = "SELECT title, description, director, release_year, cover_image, likes 
                   FROM films 
                   WHERE id = :id";
@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
             die("Film not found.");
         }
 
-        // Check if the user has liked the film
+        //check if user has liked the film
         $liked = false;
         if ($userId) {
             $likeQuery = "SELECT 1 FROM film_likes WHERE user_id = :user_id AND film_id = :film_id";
@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 }
 
 try {
-    // Fetch comments for the current film
+    //fetch comments for current film
     $commentsQuery = "SELECT c.comment, c.created_at, u.username 
                       FROM comments c
                       JOIN users u ON c.user_id = u.id
@@ -59,7 +59,6 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($film['title']); ?></title>
-    <!-- Include Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -153,12 +152,12 @@ try {
 
         .like-icon {
             font-size: 30px;
-            color: gray; /* Default unfilled heart */
+            color: gray;
             transition: color 0.3s ease;
         }
 
         .like-icon.liked {
-            color: red; /* Filled heart for liked state */
+            color: red;
         }
 
         #like-count {
@@ -259,7 +258,6 @@ try {
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <!-- Bootstrap Dropdown for collections -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         Select a Collection
@@ -298,7 +296,7 @@ try {
     </div>
 
     <script>
-        // Fetch collections for the dropdown
+        //fetch collections for the dropdown
         async function fetchCollections() {
             try {
                 const response = await fetch('../api/collections.php', { method: 'GET', credentials: 'include' });
@@ -307,7 +305,7 @@ try {
                 const dropdown = document.getElementById('collection-dropdown');
                 dropdown.innerHTML = collections.map(c => `<li><a class="dropdown-item" href="#" data-id="${c.id}">${c.name}</a></li>`).join('');
                 
-                // Add click event for dropdown items
+                //add click event for dropdown items
                 document.querySelectorAll('.dropdown-item').forEach(item => {
                     item.addEventListener('click', function () {
                         const selected = document.getElementById('dropdownMenuButton');
@@ -320,8 +318,8 @@ try {
             }
         }
 
-        // Add the book to the selected collection
-        async function addToCollection() {
+    //add the book to selected collection
+    async function addToCollection() {
     const collectionId = document.getElementById('dropdownMenuButton').getAttribute('data-id');
     const filmId = <?php echo $filmId; ?>;
 
@@ -371,7 +369,7 @@ try {
     }
 }
 
-        // Fetch collections on page load
+        //fetch collections on page load
         fetchCollections();
 
 
@@ -389,13 +387,13 @@ try {
                 const result = await response.json();
 
                 if (result.error) {
-                    alert(result.error); // Show error if user is not logged in
+                    alert(result.error); //show error if user is not logged in
                 } else {
                     const likeIcon = document.getElementById('like-icon');
                     const likeCount = document.getElementById('like-count');
 
-                    likeCount.textContent = result.likes; // Update like count
-                    likeIcon.classList.toggle('liked', result.liked); // Toggle 'liked' class
+                    likeCount.textContent = result.likes; //update like count
+                    likeIcon.classList.toggle('liked', result.liked); //toggle 'liked' class
                 }
             } catch (error) {
                 console.error('Error liking the film:', error);
@@ -424,7 +422,7 @@ try {
                 if (result.error) {
                     alert(result.error);
                 } else {
-                    // Add the new comment to the comments container
+                    //add new comment to comments container
                     const commentsContainer = document.getElementById('comments-container');
                     const newCommentHtml = `
                         <div class="comment">
@@ -435,7 +433,7 @@ try {
                     `;
                     commentsContainer.innerHTML = newCommentHtml + commentsContainer.innerHTML;
 
-                    // Clear the comment input
+                    //clear comment input
                     document.getElementById('new-comment').value = '';
                 }
             } catch (error) {
@@ -456,7 +454,6 @@ try {
             document.getElementById('comments-section').style.display = 'none';
         });
     </script>
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <?php include '../includes/footer.php'; ?>
 </body>

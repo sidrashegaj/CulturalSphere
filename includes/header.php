@@ -1,10 +1,8 @@
 <?php 
-// Check if a session has already been started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Determine the base path dynamically
+//determine base path dynamically
 $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
 ?>
 
@@ -14,7 +12,7 @@ $base_path = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../' : '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultural Sphere</title>
-    <!-- Use dynamic paths for CSS -->
+    <!--Dynamic paths for CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo $base_path; ?>css/navbar.css">
     <link rel="stylesheet" href="<?php echo $base_path; ?>css/style.css">

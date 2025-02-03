@@ -2,7 +2,7 @@
     --header-font: #fff6ef;
 }
 
-/* General Reset */
+/*GENERAL BODY STYLING*/
 body, html {
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ section {
     font-family: 'Georgia', serif;
 }
 
-/* Hero Section */
+/*HERO SECTION - MAIN VIEW OF HOME PAGE (INDEX)*/
 .hero-section {
     position: relative;
     height: 100vh;
@@ -35,7 +35,7 @@ section {
     justify-content: center;
     text-align: center;
     color: var(--header-font);
-    overflow: hidden; /* Prevents video overflow */
+    overflow: hidden; /*prevents video overflow*/
 }
 
 .bg-video, .video-bg2 {
@@ -44,8 +44,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the video covers the entire background */
-    z-index: -1; /* Sends the video behind the content */
+    object-fit: cover;
+    z-index: -1; /*sends video behind content*/
 }
 
 .video-bg2{
@@ -59,13 +59,13 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
 .hero-section .content {
-    position: relative; /* Positions content above the video */
-    z-index: 2; /* Keeps content on top of overlay and video */
+    position: relative;
+    z-index: 2;
 }
 
 .hero-section h1 {
@@ -86,7 +86,7 @@ section {
     color: var(--header-font);
 }
 
-/* Hero Section Button */
+/*BUTTON OF HERO SECTION*/
 .hero-section button {
     background-color: var(--header-font);
     border-radius: 17px;
@@ -106,7 +106,7 @@ section {
     background-color: var(--header-font) !important;
 }
 
-/* Dropdown Styles */
+/*DROPDOWN STYLE*/
 .dropdown {
     position: relative;
     display: inline-block;
@@ -115,9 +115,9 @@ section {
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Place below the button */
-    left: 50%; /* Position relative to the parent */
-    transform: translateX(-50%); /* Center the dropdown */
+    top: 100%; /*place below the button*/
+    left: 50%;
+    transform: translateX(-50%); /*center the dropdown*/
     background-color: var(--header-font);
     border: 1px solid black;
     border-radius: 30px;
@@ -140,13 +140,11 @@ section {
     background-color: #f2d7d7;
 }
 
-/* Show menu on hover */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-
-/* Animation */
+/*ANIMATION*/
 @keyframes slow-fade-loop {
     0% {
         transform: translateX(0);
@@ -170,41 +168,40 @@ section {
 }
 
 
-/* Top Info Section Styling */
+/*BANNER IN INDEX*/
 #info {
-    background-color: #6D152B; /* Deep burgundy background for elegance */
-    color: var(--header-font); /* White text for contrast */
-    text-align: center; /* Center-align the text */
-    border-top: 3px solid black; /* White accent border */
-    border-bottom: 3px solid black; /* White accent border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+    background-color: #6D152B;
+    color: var(--header-font);
+    text-align: center;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Heading Styling */
+/*HEADING STYLING*/
 #info h1 {
-    font-size: 2.5rem; /* Larger font size for prominence */
-    font-family: 'Georgia', serif; /* Elegant serif font */
-    font-weight: bold; /* Bold text for impact */
-    text-transform: uppercase; /* Make heading uppercase for emphasis */
-    letter-spacing: 2px; /* Add letter spacing for sophistication */
-    line-height: 1.2; /* Improve line height for readability */
+    font-size: 2.5rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
 }
 
-/* Heading Styling */
 #info h2 {
-    font-size: 1rem; /* Larger font size for prominence */
-    font-family: 'Georgia', serif; /* Elegant serif font */
-    font-weight: bold; /* Bold text for impact */
-    margin-bottom: 10px; /* Spacing below heading */
-    text-transform: uppercase; /* Make heading uppercase for emphasis */
-    letter-spacing: 2px; /* Add letter spacing for sophistication */
-    line-height: 1.2; /* Improve line height for readability */
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
 }
 
 #info h1, #info h2 {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease-out forwards; /* Smooth fade-in effect */
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 @keyframes fadeInUp {
@@ -215,27 +212,26 @@ section {
 }
 
 
-/* Trending Section Styling */
+/*TRENDING SECTION STYLING */
 .trending {
-    position: relative; /* Ensure pseudo-element is positioned relative to the section */
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 0; /* Matches the spacing of other sections */
-    border-radius: 100px; /* Rounded edges for the section */
-    margin: 15px auto; /* Center and add spacing between sections */
-    width: 98%; /* Responsive width for all devices */
-    max-width: 1200px; /* Limit the width on larger screens */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    overflow: hidden; /* Ensures border-radius is visible */
-    background-size: cover; /* Ensures the image covers the entire section */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents repetition of the image */
+    padding: 20px 0;
+    border-radius: 100px;
+    margin: 15px auto;
+    width: 98%; /*responsive width for all devices*/
+    max-width: 1200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-
-/* Black Overlay */
+/*DARK OVERLAY*/
 .trending::before {
     content: '';
     position: absolute;
@@ -243,55 +239,53 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
-    z-index: 1; /* Ensure the overlay sits above the background */
-    border-radius: 100px; /* Match the section's rounded corners */
-    pointer-events: none; /* Allow interaction with elements below the overlay */
+    background-color: rgba(0, 0, 0, 0.5); /*black with 50% transparency*/
+    z-index: 1;
+    border-radius: 100px;
+    pointer-events: none;
 }
 
-/* Content Above Overlay */
 .trending > .description-text,
 .trending > .card-wrap {
-    position: relative; /* Ensure content sits above the overlay */
+    position: relative;
     z-index: 2;
 }
 
-/* Section-Specific Backgrounds */
+/*BACKGROUNDS OF EACH TRENDING SECTION*/
 .trending.films {
-    background-image: url('../images/films/sectionfilms.jpg'); /* Cinema background image */
+    background-image: url('../images/films/sectionfilms.jpg'); /*films background image*/
 }
 
 .trending.books {
-    background-image: url('../images/books/sectionbooks.jpg'); /* Books background image */
+    background-image: url('../images/books/sectionbooks.jpg'); /*books background image*/
 }
 
 .trending.art {
-    background-image: url('../images/art/sectionart.jpg'); /* Art background image */
+    background-image: url('../images/art/sectionart.jpg'); /*art background image*/
 }
 
-/* Section Title Styling */
+/*SECTION TITLE STYLING*/
 .trending > .description-text h1 {
     margin: 30px 0;
     font-size: 2rem;
-    color: var(--header-font); /* White text for contrast */
+    color: var(--header-font);
     text-align: center;
     font-family: 'Georgia', serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Card Wrapper */
 .card-wrap {
     position: relative;
-    width: 300px; /* Fixed width to ensure consistent layout */
-    height: 400px; /* Fixed height for cards */
+    width: 300px;
+    height: 400px;
     cursor: pointer;
-    border-radius: 100px; /* Rounded corners for the container */
+    border-radius: 100px;
 }
 
-/* Individual Cards */
+/*INDIVIDUAL CARD*/
 .card {
     position: absolute;
-    width: 80%; /* Size of each card relative to the card wrapper */
+    width: 80%; /*size of each card relative to card wrapper*/
     height: 80%;
     background-color: white;
     border-radius: 10px;
@@ -302,25 +296,25 @@ section {
     padding-top: 10%;
 }
 
-/* Bottom Card */
+/*Bottom Card*/
 .card.bottom {
     transform: translateX(-20px) rotateZ(-8deg);
     z-index: 1;
 }
 
-/* Middle Card */
+/*Middle Card*/
 .card {
     transform: translateX(0) rotateZ(-4deg);
     z-index: 2;
 }
 
-/* Top Card */
+/*Top Card*/
 .card.top {
     transform: translateX(1rem) rotateZ(8deg);
     z-index: 3;
 }
 
-/* Hover Effects */
+/*Hover Effects*/
 .card-wrap:hover .card.bottom {
     transform: translateX(-16rem) rotateZ(-12deg);
 }

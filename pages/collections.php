@@ -24,7 +24,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -2; /* Keep the video behind other content */
+            z-index: -2; /*keep video behind other content*/
         }
 
         .bg-overlay {
@@ -33,8 +33,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.55); /* Black with 50% transparency */
-            z-index: -1; /* Ensure it's between the video and content */
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
         }
 
 
@@ -46,8 +46,8 @@
             justify-content: center;
             text-align: center;
             color: var(--header-font);
-            overflow: hidden; /* Prevents video overflow */
-            z-index: 1; /* Place the content above the overlay */
+            overflow: hidden;
+            z-index: 1;
         }
 
         #collections-container h1 {
@@ -71,32 +71,31 @@
 
         #new-collection-btn {
             display: inline-block;
-            margin: 20px auto; /* Center the button horizontally */
-            background: linear-gradient(135deg, #6D152B, #8B213F); /* Gradient for depth */
+            margin: 20px auto;
+            background: linear-gradient(135deg, #6D152B, #8B213F);
             color: white;
-            padding: 25px; /* Spacious padding */
+            padding: 25px;
             border: none;
-            border-radius: 50px; /* Rounded corners */
-            font-size: 1.2rem; /* Larger font size */
+            border-radius: 50px;
+            font-size: 1.2rem;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px; /* Slight letter spacing for better readability */
+            letter-spacing: 1px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for elevation */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         #new-collection-btn:hover {
-            background: linear-gradient(135deg, #8B213F, #6D152B); /* Reverse gradient on hover */
-            transform: translateY(-3px); /* Slight lift effect */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            background: linear-gradient(135deg, #8B213F, #6D152B); /*reverse gradient when hover*/
+            transform: translateY(-3px);/
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         #new-collection-btn:active {
-            transform: translateY(1px); /* Button press effect */
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+            transform: translateY(1px);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
         }
-
 
         #new-collection-modal {
             display: none;
@@ -111,7 +110,7 @@
             z-index: 1000;
             font-family: 'Arial', sans-serif;
             width: 400px;
-            color: #333; /* Neutral text color for contrast */
+            color: #333;
         }
 
         #new-collection-modal h2 {
@@ -179,8 +178,6 @@
             color: white;
         }
 
-
-
         #new-collection-btn {
             display: block;
             margin: 20px auto;
@@ -200,10 +197,10 @@
 
         #collections-list {
             display: flex;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-            justify-content: center; /* Centers the cards horizontally */
-            gap: 20px; /* Adds space between cards */
-            padding: 20px; /* Adds some padding around the cards */
+            flex-wrap: wrap; /*allows wrapping on smaller screens*/
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
 
         .collection-card {
@@ -212,8 +209,8 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin: 0; /* Removed margin, gap is handling spacing */
-            width: 250px; /* Fixed width for consistency */
+            margin: 0;
+            width: 250px;
             text-align: center;
         }
 
@@ -255,7 +252,7 @@
             transform: scale(1.05);
         }
 
-        /* Animation */
+        /*Animation*/
         @keyframes slow-fade-loop {
             0% {
                 transform: translateX(0);
@@ -292,11 +289,11 @@
         <p class="lead mt-3">Save your favorite cultural pieces to revisit and be inspired by them anytime.</p>
         <button id="new-collection-btn">+ Add New Collection</button>
         <div id="collections-list">
-            <!-- Dynamic collection content will be inserted here -->
+            <!--Dynamic collctioncontent is be inserted here-->
         </div>
     </div>
 
-    <!-- Add New Collection Modal -->
+    <!-- Add New Collection Dialog Pop-up -->
     <div id="new-collection-modal">
         <h2>Add New Collection</h2>
         <form id="new-collection-form">
@@ -307,113 +304,110 @@
         </form>
     </div>
 
-
-       <script>
-
+    <script>  
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("new-collection-modal");
+            const container = document.getElementById("collections-list");
+            const form = document.getElementById("new-collection-form");
+            const newCollectionBtn = document.getElementById("new-collection-btn");
+            const closeModalBtn = document.querySelector("#new-collection-modal button:last-of-type");
         
-    document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("new-collection-modal");
-        const container = document.getElementById("collections-list");
-        const form = document.getElementById("new-collection-form");
-        const newCollectionBtn = document.getElementById("new-collection-btn");
-        const closeModalBtn = document.querySelector("#new-collection-modal button:last-of-type");
-    
-        if (!modal || !container || !form || !newCollectionBtn || !closeModalBtn) {
-            console.error("One or more required elements are missing from the DOM.");
-            return;
-        }
-    
-        // ✅ OPEN MODAL
-        newCollectionBtn.addEventListener("click", () => {
-            modal.style.display = "block";
-        });
-    
-        // ✅ CLOSE MODAL
-        function closeModal() {
-            modal.style.display = "none";
-        }
-        closeModalBtn.addEventListener("click", closeModal);
-    
-        // ✅ CREATE COLLECTION
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-    
-            const name = document.querySelector('[name="name"]').value.trim();
-            const description = document.querySelector('[name="description"]').value.trim();
-    
-            if (!name) {
-                Swal.fire({ icon: "warning", title: "Missing Name", text: "Please enter a name for your collection." });
+            if (!modal || !container || !form || !newCollectionBtn || !closeModalBtn) {
+                console.error("One or more required elements are missing from the DOM.");
                 return;
             }
-    
-            try {
-                const response = await fetch("../api/collections.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, description }),
-                    credentials: "include",
-                });
-    
-                const result = await response.json();
-    
-                if (response.ok) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Collection Created",
-                        text: result.message,
-                        timer: 1500,
-                        showConfirmButton: false,
-                    }).then(() => {
-                        closeModal();
-                        form.reset();
-                        fetchCollections(); // ✅ Refresh collections
-                    });
-                } else {
-                    Swal.fire({ icon: "error", title: "Error", text: result.error });
-                }
-            } catch (error) {
-                console.error("Error creating collection:", error);
-                Swal.fire({ icon: "error", title: "Error", text: "Something went wrong. Please try again." });
+        
+            //OPEN MODAL
+            newCollectionBtn.addEventListener("click", () => {
+                modal.style.display = "block";
+            });
+        
+            //CLOSE MODAL
+            function closeModal() {
+                modal.style.display = "none";
             }
-        });
-    
-        // ✅ FETCH COLLECTIONS
+            closeModalBtn.addEventListener("click", closeModal);
+        
+            //CREATE COLLECTION
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+        
+                const name = document.querySelector('[name="name"]').value.trim();
+                const description = document.querySelector('[name="description"]').value.trim();
+        
+                if (!name) {
+                    Swal.fire({ icon: "warning", title: "Missing Name", text: "Please enter a name for your collection." });
+                    return;
+                }
+        
+                try {
+                    const response = await fetch("../api/collections.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name, description }),
+                        credentials: "include",
+                    });
+        
+                    const result = await response.json();
+        
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Collection Created",
+                            text: result.message,
+                            timer: 1500,
+                            showConfirmButton: false,
+                        }).then(() => {
+                            closeModal();
+                            form.reset();
+                            fetchCollections(); //Refresh collections
+                        });
+                    } else {
+                        Swal.fire({ icon: "error", title: "Error", text: result.error });
+                    }
+                } catch (error) {
+                    console.error("Error creating collection:", error);
+                    Swal.fire({ icon: "error", title: "Error", text: "Something went wrong. Please try again." });
+                }
+            });
+        
+        //FETCH COLLECTIONS
         async function fetchCollections() {
-    try {
-        const response = await fetch("../api/collections.php", { method: "GET", credentials: "include" });
-        if (!response.ok) throw new Error("Failed to fetch collections");
+        try {
+            const response = await fetch("../api/collections.php", { method: "GET", credentials: "include" });
+            if (!response.ok) throw new Error("Failed to fetch collections");
 
-        const collections = await response.json();
-        const container = document.getElementById("collections-list");
+            const collections = await response.json();
+            const container = document.getElementById("collections-list");
 
-        container.innerHTML = ""; // Clear existing collections
+            container.innerHTML = ""; //Clear existing collections
 
-        if (collections.length === 0) {
-            container.innerHTML = '<p class="text-white">No collections available. Create your first collection!</p>';
-            return;
+            if (collections.length === 0) {
+                container.innerHTML = '<p class="text-white">No collections available. Create your first collection!</p>';
+                return;
+            }
+
+            collections.forEach((collection) => {
+                const card = document.createElement("div");
+                card.classList.add("collection-card");
+                card.id = `collection-${collection.id}`;
+                card.innerHTML = `
+                    <h3>${collection.name}</h3>
+                    <p>${collection.description || "No description provided."}</p>
+                    <button class="view-button" data-id="${collection.id}">View</button>
+                    <button class="delete-button" data-id="${collection.id}">Delete</button>
+                `;
+                container.appendChild(card);
+            });
+
+            attachEventListeners(); //ensure buttons work after rendering
+        } catch (error) {
+            console.error("Error fetching collections:", error);
         }
-
-        collections.forEach((collection) => {
-            const card = document.createElement("div");
-            card.classList.add("collection-card");
-            card.id = `collection-${collection.id}`;
-            card.innerHTML = `
-                <h3>${collection.name}</h3>
-                <p>${collection.description || "No description provided."}</p>
-                <button class="view-button" data-id="${collection.id}">View</button>
-                <button class="delete-button" data-id="${collection.id}">Delete</button>
-            `;
-            container.appendChild(card);
-        });
-
-        attachEventListeners(); // Ensure buttons work after rendering
-    } catch (error) {
-        console.error("Error fetching collections:", error);
     }
-}
 
-    
-        // ✅ DELETE COLLECTION
+        
+        //DELETE COLLECTION
         async function deleteCollection(collectionId) {
             Swal.fire({
                 title: "Are you sure?",
@@ -445,7 +439,7 @@
             });
         }
     
-        // ✅ ATTACH EVENT LISTENERS FOR BUTTONS
+        //ATTACH EVENT LISTENERS FOR BUTTONS
         function attachEventListeners() {
             document.querySelectorAll(".view-button").forEach((button) => {
                 button.addEventListener("click", function () {
@@ -462,16 +456,15 @@
             });
         }
     
-        // ✅ VIEW COLLECTION
+        //VIEW COLLECTION
         function viewCollection(id) {
             window.location.href = `collection_items.php?collection_id=${id}`;
         }
     
-        // Initial fetch on page load
+        //Initial fetch on page load
         fetchCollections();
     });
-       </script> 
-
+    </script> 
 
     <?php include '../includes/footer.php'; ?>
 </body>

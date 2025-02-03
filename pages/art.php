@@ -1,9 +1,9 @@
 <?php 
-include '../db.php'; // Include your database connection file
+include '../db.php'; //database connection file
 
-// Fetch art from the database
+//fetch art from our cultural_sphere database
 try {
-    $query = "SELECT id, name, image_path FROM art"; // Fetch required columns, including image_path
+    $query = "SELECT id, name, image_path FROM art"; //fetch required columns including image_path
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $arts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +25,6 @@ try {
     <section class="hero">
         <div class="hero-content">
             <div class="hero-images">
-                <!-- Hero images are hardcoded -->
                 <img src="../images/art/Bal_du_moulin_de_la_Galette.jpg" alt="Artwork 1" class="image-topleft">
                 <img src="../images/art/A_Sunday_Afternoon_on_the_Island.jpg" alt="Artwork 2" class="image-bottomleft">
                 <img src="../images/art/Starry_Night.jpg" alt="Artwork 3" class="image-bottomright">

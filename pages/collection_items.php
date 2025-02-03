@@ -11,17 +11,17 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow-x: hidden; /* Only prevent horizontal scrolling */
+            overflow-x: hidden; /*prevent horizontal scrolling*/
         }
 
         .bg-video {
-            position: fixed; /* Keep the video fixed to the viewport */
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100vw; /* Full width of the viewport */
-            height: 100vh; /* Full height of the viewport */
-            object-fit: cover; /* Ensures the video scales properly without distortion */
-            z-index: -2; /* Keep it behind all other content */
+            width: 100vw;
+            height: 100vh; 
+            object-fit: cover;
+            z-index: -2;
         }
 
         .bg-overlay {
@@ -30,8 +30,8 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.55); /* Transparent black overlay */
-            z-index: -1; /* Between video and content */
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
         }
 
         .head{
@@ -41,8 +41,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            overflow: hidden; /* Prevents video overflow */
-            z-index: 1; /* Place the content above the overlay */
+            overflow: hidden;
+            z-index: 1;
         }
 
         .head h1 {
@@ -110,7 +110,6 @@
             font-size: 1rem;
             color: black;
         }
-
     </style>
 </head>
 <body>

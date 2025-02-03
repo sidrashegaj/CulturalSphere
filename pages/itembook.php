@@ -1,8 +1,8 @@
 <?php 
-session_start(); // Ensure this is the very first PHP line
+session_start();
 include '../db.php'; 
 
-// Get logged-in user ID or set to null if not logged in
+//get logged-in userID or set null if not logged in
 $userId = $_SESSION['user_id'] ?? null;
 
 if (isset($_GET['id'])) {
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
         if (!$book) {
             die("Book not found.");
         }
-        // Check if the user has liked the book
+        //check if user has liked the book
         $liked = false;
         if ($userId) {
             $likeQuery = "SELECT 1 FROM book_likes WHERE user_id = :user_id AND book_id = :book_id";
@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
     die("Invalid book ID.");
 }
 try {
-    // Fetch comments for the current book
+    //fetch comments for current book
     $commentsQuery = "SELECT c.comment, c.created_at, u.username 
                       FROM book_comments c
                       JOIN users u ON c.user_id = u.id
@@ -114,9 +114,9 @@ try {
         }
 
         .back-button {
-            position: absolute; /* Allows precise placement */
-            top: 67%; /* Adjust spacing from the top */
-            right: 6%; /* Push the button outside the right of the card */
+            position: absolute;
+            top: 67%;
+            right: 6%;
             padding: 10px 20px;
             background: #440e1b;
             border: none;
@@ -145,12 +145,12 @@ try {
 
         .like-icon {
             font-size: 30px;
-            color: gray; /* Default unfilled heart */
+            color: gray;
             transition: color 0.3s ease;
         }
 
         .like-icon.liked {
-            color: red; /* Filled heart for liked state */
+            color: red;
         }
 
         #like-count {

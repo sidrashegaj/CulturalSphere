@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['id'])) {
-        // Fetch items for a specific collection
+        //fetch items for a specific collection
         $collectionId = intval($_GET['id']);
         try {
             $query = "
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
         }
     } else {
-        // Fetch all collections
+        //fetch all collections
         try {
             $stmt = $conn->prepare("SELECT * FROM collections WHERE user_id = ? ORDER BY created_at DESC");
             $stmt->execute([$userId]);

@@ -3,14 +3,12 @@ include '../db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if user is logged in
+    //heck if user is logged in
     $userId = $_SESSION['user_id'] ?? null;
     if (!$userId) {
         echo json_encode(['error' => 'You must be logged in to comment.']);
         exit;
     }
-
-    // Decode JSON data
     $data = json_decode(file_get_contents('php://input'), true);
     $bookId = $data['book_id'] ?? null;
     $comment = $data['comment'] ?? null;
@@ -21,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Insert comment into the database
+        //insert comment into cultural_sphere database
         $query = "INSERT INTO book_comments (book_id, user_id, comment, created_at) 
                   VALUES (:book_id, :user_id, :comment, NOW())";
         $stmt = $conn->prepare($query);

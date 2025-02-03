@@ -1,11 +1,11 @@
-/* General body styling */
+/*GENERAL BODY STYLING*/
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #a63953 !important; /* Match hero section */
-    color: #f8f8f8; /* Light text color */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: #a63953 !important;
+    color: #f8f8f8;
+    overflow-x: hidden; /*prevent horizontal scrolling*/
 }
 
 html {
@@ -17,27 +17,27 @@ html {
     box-sizing: inherit;
 }
 
-/* Circle Text Styling */
+/*CIRCLE TEXT STYLING*/
 .circle-text {
-    position: absolute; /* Position within the hero section */
-    top: 25%; /* Adjust top placement */
-    left: 85%; /* Adjust left placement */
-    transform: translate(-50%, -50%); /* Center transform */
+    position: absolute; /*position within hero section */
+    top: 25%;
+    left: 85%;
+    transform: translate(-50%, -50%); /*center transform*/
     font-family: "Cinzel", serif;
     text-transform: uppercase;
     font-size: 2.1rem;
     color: #fff6ef;
     cursor: pointer;
-    animation: rotate 8s linear infinite; /* Rotating animation */
+    animation: rotate 8s linear infinite; /*rotating animation*/
     z-index: 10;
-    width: 350px; /* Diameter of the circle */
+    width: 350px; /*diameter of the circle*/
     height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Rotation Animation */
+/*Rotation Animation*/
 @keyframes rotate {
     from {
         transform: translate(-50%, -50%) rotate(0deg);
@@ -48,10 +48,10 @@ html {
 }
 
 .circle-text:hover {
-    animation-duration: 5s; /* Speed up rotation on hover */
+    animation-duration: 5s;
 }
 
-/* Hero Section */
+/*HERO SECTION - FIRST VIEW OF EACH CATEGORY*/
 .hero {
     background-color: #440e1b;
     color: white;
@@ -113,29 +113,29 @@ html {
 }
 
 
-/* Top Info Section Styling */
+/*BANNER SECTION*/
 .info {
-    background-color: black; /* Deep burgundy background for elegance */
-    color: var(--header-font); /* White text for contrast */
-    text-align: center; /* Center-align the text */
+    background-color: black;
+    color: var(--header-font);
+    text-align: center;
     text-transform: uppercase;
-    border-top: 3px solid black; /* White accent border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+    border-top: 3px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 20px 58px;
 }
 
-/* Heading Styling */
+/*Heading Styling*/
 .info h2 {
     color: var(--header-font);
-    font-size: 1rem; /* Larger font size for prominence */
-    font-family: 'Georgia', serif; /* Elegant serif font */
-    font-weight: bold; /* Bold text for impact */
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
 }
 
 .info h2 {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease-out forwards; /* Smooth fade-in effect */
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 @keyframes fadeInUp {
@@ -146,18 +146,17 @@ html {
 }
 
 
-
-/* Catalog Section */
+/*CATALONG SECTION STYLING*/
 .catalog {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column size dynamically */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /*adjust column size dynamically*/
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Book Cards (same as film) */
+/*Book Cards (same as film)*/
 .film {
     text-align: center;
     background-color: #440e1b;
@@ -165,14 +164,14 @@ html {
     border: 1px solid #ddd;
     border-radius: 5px;
     transition: transform 0.2s;
-    width: 160px; /* Fixed width for consistency */
+    width: 160px; /*fixed width*/
     margin: 0 auto;
 }
 
 .film img {
     width: 100%;
     height: auto;
-    max-width: 150px; /* Same dimensions as films */
+    max-width: 150px; /*same dimensions as films*/
     max-height: 225px;
     border-radius: 5px;
     object-fit: cover;
@@ -217,9 +216,12 @@ html {
 .grid-item img {
     max-width: 100%;
     border-radius: 5px;
-}  .art-catalog {
+}  
+
+/*ART CATALOG STYLING*/
+.art-catalog {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Always display 3 cards per row */
+    grid-template-columns: repeat(3, 1fr); /*always display 3 cards per row*/
     gap: 30px;
     padding: 40px 20px;
     max-width: 1400px;
@@ -229,14 +231,14 @@ html {
 
 .art-card {
     text-align: center;
-    background-color: #5b1928; /* Main card background color (cafe-like) */
+    background-color: #5b1928; /*main card background color*/
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Ensure the card fits the grid cell */
-    max-width: 350px; /* Cap the maximum card size */
+    width: 100%; /*card fits the grid cell*/
+    max-width: 350px;
     overflow: hidden;
 }
 
@@ -247,11 +249,11 @@ html {
 
 .art-card .art-image-container {
     width: 100%;
-    height: 250px; /* Fixed height for the image display */
-    background-color: #a63953; /* Fallback background color if image fails */
+    height: 250px;
+    background-color: #a63953;
     border-radius: 10px;
     margin-bottom: 15px;
-    overflow: hidden; /* Ensure child div doesn't overflow */
+    overflow: hidden; /*ensure child div doesnt overflow*/
     position: relative;
 }
 

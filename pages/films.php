@@ -1,9 +1,9 @@
 <?php
-include '../db.php'; // Include your database connection file
+include '../db.php';
 
-// Fetch films from the database
+//fetch films from cultural_sphere database
 try {
-    $query = "SELECT id, title, cover_image FROM films"; // Fetch only required columns
+    $query = "SELECT id, title, cover_image FROM films";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +25,6 @@ try {
     <section class="hero">
         <div class="hero-content">
             <div class="hero-images">
-                <!-- Hero images (static placeholders) -->
                 <img src="../images/films/filmscene.jpg" alt="Citizen Kane" class="image-topleft">
                 <img src="../images/films/filmscene2.jpg" alt="The Godfather" class="image-bottomleft">
                 <img src="../images/films/filmscene3.jpg" alt="Dr. Strangelove" class="image-bottomright">

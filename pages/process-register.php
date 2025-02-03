@@ -1,5 +1,5 @@
 <?php
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Check if email already exists
+        //check if email already exists
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -29,21 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // Hash the password
+        //hash the password
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        // Insert the user into the database
+        //insert the user into the database
         $stmt = $conn->prepare("INSERT INTO users (username, email, password, created_at) VALUES (:name, :email, :password, NOW())");
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':password', $hashed_password, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            // Set session variables
+            //set session variables
             $_SESSION['user_id'] = $conn->lastInsertId();
             $_SESSION['username'] = $name;
 
-            // Redirect to index.php
+            //redirect to index.php
             header("Location: ../index.php");
             exit();
         } else {
