@@ -123,7 +123,7 @@
     <div class="bg-overlay"></div>
 
     <div class="head">
-        <h1 class="display-3 fw-bold text-uppercase">Items in This Collections</h1>
+        <h1 class="display-3 fw-bold text-uppercase">Items in This Collection</h1>
         <button class="back-button" onclick="window.location.href='collections.php'">Back to Collections</button>
     </div>
     

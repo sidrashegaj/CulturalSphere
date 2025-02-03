@@ -292,7 +292,7 @@ try {
             <textarea id="new-comment" rows="3" placeholder="Write your comment here..."></textarea>
             <button id="submit-comment" class="btn btn-success" onclick="postComment()">Post Comment</button>
         <?php else: ?>
-            <p>You need to <a href="../login.php">log in</a> to leave a comment.</p>
+            <p>You need to <a href="login.php">log in</a> to leave a comment.</p>
         <?php endif; ?>
     </div>
 
