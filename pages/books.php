@@ -1,12 +1,12 @@
 <?php
-include '../db.php'; // Include your database connection file
+include '../db.php'; //Our database connection file
 
-// Fetch books from the database
+//fetch books from our database
 try {
-    $query = "SELECT id, title, cover_image FROM books"; // Fetch only required columns
+    $query = "SELECT id, title, cover_image FROM books"; //fetch only required columns
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $books = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all books as an associative array
+    $books = $stmt->fetchAll(PDO::FETCH_ASSOC); //fetch all books as an array
 } catch (PDOException $e) {
     die("Error fetching books: " . $e->getMessage());
 }
@@ -18,26 +18,23 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Catalog</title>
     <link rel="stylesheet" href="../css/pagesstyles.css">
-    <script src="https://cdn.jsdelivr.net/npm/circletype@2.3.0/dist/circletype.min.js"></script> <!-- Add CircleType.js -->
+    <script src="https://cdn.jsdelivr.net/npm/circletype@2.3.0/dist/circletype.min.js"></script>
     <style>
         .image-topleft {
             top: 7%;
             left: 1%;
             width: 37%;
         }
-
         .image-bottomleft {
             bottom: 7%;
             left: 10%;
             width: 37%;
         }
-
         .image-bottomright {
             bottom: 8%;
             right: 13%;
             width: 35%;
         }
-
         .image-topright {
             top: 14%;
             left: 39%;

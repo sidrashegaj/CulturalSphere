@@ -1,15 +1,14 @@
 <?php 
-include '../db.php'; // Include your database connection file
+include '../db.php';
 session_start();
 
-// Fetch logged-in user ID or set to null if not logged in
-$userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : null; // Add this line
-
-// Fetch art details based on ID
+//fetch logged-in userID or set null if not logged in
+$userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : null;
+//fetch art details based on ID
 if (isset($_GET['id'])) {
     $artId = intval($_GET['id']);
     try {
-        $query = "SELECT name, description, location, created_at, creator, image_path, likes FROM art WHERE id = :id"; // Include image_path
+        $query = "SELECT name, description, location, created_at, creator, image_path, likes FROM art WHERE id = :id";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':id', $artId, PDO::PARAM_INT);
         $stmt->execute();
@@ -19,7 +18,7 @@ if (isset($_GET['id'])) {
             die("Art not found.");
         }
 
-        // Check if the user has liked the art
+        //check if user has liked the art
         $liked = false;
         if ($userId) {
             $likeQuery = "SELECT 1 FROM art_likes WHERE user_id = :user_id AND art_id = :art_id";
@@ -35,7 +34,7 @@ if (isset($_GET['id'])) {
 }
 
 try {
-    // Fetch comments for the current art
+    //fetch comments for current art
     $commentsQuery = "SELECT c.comment, c.created_at, u.username 
                       FROM art_comments c
                       JOIN users u ON c.user_id = u.id
@@ -55,7 +54,6 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($art['name']); ?></title>
-    <!-- Include Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -76,7 +74,7 @@ try {
             min-height: 100vh;
             padding: 40px;
             gap: 40px;
-            position: relative; /* Required for positioning */
+            position: relative;
         }
 
         .art-image {
@@ -99,7 +97,7 @@ try {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative; /* Context for positioning */
+            position: relative;
         }
 
         .art-info h1 {
@@ -120,9 +118,9 @@ try {
         }
 
         .back-button {
-            position: absolute; /* Allows precise placement */
-            top: 70%; /* Adjust spacing from the top */
-            right: 6%; /* Push the button outside the right of the card */
+            position: absolute; /*allow precise placement*/
+            top: 70%;
+            right: 6%;
             padding: 10px 20px;
             background: #440e1b;
             border: none;
@@ -154,12 +152,12 @@ try {
 
         .like-icon {
             font-size: 30px;
-            color: gray; /* Default unfilled heart */
+            color: gray; /*default unfilled heart*/
             transition: color 0.3s ease;
         }
 
         .like-icon.liked {
-            color: red; /* Filled heart for liked state */
+            color: red; /*filled heart when liked*/
         }
 
         #like-count {
@@ -297,7 +295,7 @@ try {
     </div>
 
     <script>
-        // Fetch collections for the dropdown
+        //fetch collections for dropdown
         async function fetchCollections() {
             try {
                 const response = await fetch('../api/collections.php', { method: 'GET', credentials: 'include' });
@@ -306,7 +304,7 @@ try {
                 const dropdown = document.getElementById('collection-dropdown');
                 dropdown.innerHTML = collections.map(c => `<li><a class="dropdown-item" href="#" data-id="${c.id}">${c.name}</a></li>`).join('');
 
-                // Add click event for dropdown items
+                //add click event for dropdown items
                 document.querySelectorAll('.dropdown-item').forEach(item => {
                     item.addEventListener('click', function () {
                         const selected = document.getElementById('dropdownMenuButton');
@@ -368,7 +366,7 @@ try {
     }
 }
 
-        // Fetch collections on page load
+        //fetch collections on page load
         fetchCollections();
 
         async function handleLike() {
@@ -385,13 +383,13 @@ try {
                 const result = await response.json();
 
                 if (result.error) {
-                    alert(result.error); // Show error if user is not logged in
+                    alert(result.error); //show error if user is not logged in
                 } else {
                     const likeIcon = document.getElementById('like-icon');
                     const likeCount = document.getElementById('like-count');
 
-                    likeCount.textContent = result.likes; // Update like count
-                    likeIcon.classList.toggle('liked', result.liked); // Toggle 'liked' class
+                    likeCount.textContent = result.likes; //update like count
+                    likeIcon.classList.toggle('liked', result.liked); //toggle 'liked' class
                 }
             } catch (error) {
                 console.error('Error liking the art:', error);
@@ -420,7 +418,7 @@ try {
                 if (result.error) {
                     alert(result.error);
                 } else {
-                    // Add the new comment to the comments container
+                    //add new comment to comments container
                     const commentsContainer = document.getElementById('comments-container');
                     const newCommentHtml = `
                         <div class="comment">
@@ -431,7 +429,7 @@ try {
                     `;
                     commentsContainer.innerHTML = newCommentHtml + commentsContainer.innerHTML;
 
-                    // Clear the comment input
+                    //clear comment input
                     document.getElementById('new-comment').value = '';
                 }
             } catch (error) {

@@ -4,7 +4,7 @@ session_start();
 
 header('Content-Type: application/json');
 
-// Check if user is logged in
+//check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['error' => 'You need to be logged in to post a comment.']);
     exit;
@@ -21,7 +21,7 @@ if (empty($comment)) {
 }
 
 try {
-    // Insert the comment into the database
+    //insert comment into outr database
     $query = "INSERT INTO comments (film_id, user_id, comment) VALUES (:film_id, :user_id, :comment)";
     $stmt = $conn->prepare($query);
     $stmt->execute(['film_id' => $filmId, 'user_id' => $userId, 'comment' => $comment]);

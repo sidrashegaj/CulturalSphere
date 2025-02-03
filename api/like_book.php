@@ -2,7 +2,7 @@
 session_start();
 include '../db.php';
 
-// Check if the user is logged in
+//check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['error' => 'You must be logged in to like a book.']);
     exit;
@@ -19,30 +19,30 @@ if (!isset($data['book_id'])) {
 $bookId = intval($data['book_id']);
 
 try {
-    // Check if the user has already liked the book
+    //check if user has already liked the book
     $checkQuery = "SELECT 1 FROM book_likes WHERE user_id = :user_id AND book_id = :book_id";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->execute(['user_id' => $userId, 'book_id' => $bookId]);
 
     if ($checkStmt->rowCount() > 0) {
-        // Unlike the book
+        //unlike book
         $deleteQuery = "DELETE FROM book_likes WHERE user_id = :user_id AND book_id = :book_id";
         $deleteStmt = $conn->prepare($deleteQuery);
         $deleteStmt->execute(['user_id' => $userId, 'book_id' => $bookId]);
 
-        // Decrement like count
+        //decrement like count
         $updateLikes = "UPDATE books SET likes = likes - 1 WHERE id = :book_id";
         $updateStmt = $conn->prepare($updateLikes);
         $updateStmt->execute(['book_id' => $bookId]);
 
         echo json_encode(['liked' => false, 'likes' => getLikeCount($bookId, $conn)]);
     } else {
-        // Like the book
+        //like book
         $insertQuery = "INSERT INTO book_likes (user_id, book_id) VALUES (:user_id, :book_id)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->execute(['user_id' => $userId, 'book_id' => $bookId]);
 
-        // Increment like count
+        //increment like count
         $updateLikes = "UPDATE books SET likes = likes + 1 WHERE id = :book_id";
         $updateStmt = $conn->prepare($updateLikes);
         $updateStmt->execute(['book_id' => $bookId]);
@@ -54,7 +54,7 @@ try {
     exit;
 }
 
-// Helper function to get the current like count
+//get current like count
 function getLikeCount($bookId, $conn) {
     $query = "SELECT likes FROM books WHERE id = :book_id";
     $stmt = $conn->prepare($query);

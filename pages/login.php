@@ -9,7 +9,7 @@
     <?php include '../includes/header.php'; ?>
 
     <style>
-        /* Update button colors */
+        /*update button colors*/
         .btn-custom {
             background-color: #440e1b;
             color: #fff;
@@ -56,11 +56,11 @@
                             <input type="password" class="form-control rounded-pill" id="password" name="password" placeholder="Enter your password" required>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <!-- <a href="#" class="text-decoration-none text-muted">Forgot password?</a> -->
+                            <!-- FOR MORE ADVANCED USER FRIENDLY WE CAN ALSO IMPLEMENT THIS <a href="#" class="text-decoration-none text-muted">Forgot password?</a> --> 
                         </div>
                         <button type="submit" class="btn btn-custom w-100 rounded-pill">Log In</button>
                         <p class="text-center mt-3 text-dark">
-                            Don’t have an account? 
+                            Don't have an account? 
                             <a href="register.php" class="text-decoration-none text-custom fw-bold">Sign Up</a>
                         </p>
                     </form>

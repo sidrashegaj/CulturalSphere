@@ -3,14 +3,13 @@ include '../db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if user is logged in
+    //check if user is logged in
     $userId = $_SESSION['user_id'] ?? null;
     if (!$userId) {
         echo json_encode(['error' => 'You must be logged in to comment.']);
         exit;
     }
-
-    // Decode JSON data
+    //decode JSON data
     $data = json_decode(file_get_contents('php://input'), true);
     $artId = $data['art_id'] ?? null;
     $comment = $data['comment'] ?? null;
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Insert comment into the database
+        //onsert comment into database
         $query = "INSERT INTO art_comments (art_id, user_id, comment, created_at) 
                   VALUES (:art_id, :user_id, :comment, NOW())";
         $stmt = $conn->prepare($query);
