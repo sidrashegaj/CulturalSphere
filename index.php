@@ -52,20 +52,20 @@
     <div class="card-wrap">
         <div class="card bottom" style="background-image: url('images/films/Roma.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Joker</h3>
-                <p>Likes: 1350</p>
+                <h3>Roma</h3>
+                <p>Likes: 13</p>
             </div>
         </div>
         <div class="card middle" style="background-image: url('images/films/Avatar.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Titanic</h3>
-                <p>Likes: 1500</p>
+                <h3>Avatar</h3>
+                <p>Likes: 15</p>
             </div>
         </div>
         <div class="card top" style="background-image: url('images/films/Moonlight.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Interstellar</h3>
-                <p>Likes: 1250</p>
+                <h3>Moonlight</h3>
+                <p>Likes: 12</p>
             </div>
         </div>
     </div>
@@ -78,20 +78,20 @@
     <div class="card-wrap">
         <div class="card bottom" style="background-image: url('images/books/1984.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>The Great Gatsby</h3>
-                <p>Likes: 1850</p>
+                <h3>1984</h3>
+                <p>Likes: 18</p>
             </div>
         </div>
         <div class="card middle" style="background-image: url('images/books/bb.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Lord of the Rings</h3>
-                <p>Likes: 1900</p>
+                <h3>The Book Thief</h3>
+                <p>Likes: 19</p>
             </div>
         </div>
         <div class="card top" style="background-image: url('images/books/hamlet.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Harry Potter</h3>
-                <p>Likes: 2000</p>
+                <h3>Hamlet</h3>
+                <p>Likes: 20</p>
             </div>
         </div>
     </div>
@@ -104,20 +104,20 @@
     <div class="card-wrap">
         <div class="card bottom" style="background-image: url('images/art/The_Arnolfi_Portrait.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Mona Lisa</h3>
-                <p>Likes: 3000</p>
+                <h3>The Scream</h3>
+                <p>Likes: 30</p>
             </div>
         </div>
         <div class="card middle" style="background-image: url('images/art/Mona_Lisa.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>Starry Night</h3>
-                <p>Likes: 2900</p>
+                <h3>Monalisa</h3>
+                <p>Likes: 29</p>
             </div>
         </div>
         <div class="card top" style="background-image: url('images/art/Starry_Night.jpg'); background-size: cover; background-position: center;">
             <div class="card-content">
-                <h3>The Scream</h3>
-                <p>Likes: 2800</p>
+                <h3>Starrt Night</h3>
+                <p>Likes: 28</p>
             </div>
         </div>
     </div>
