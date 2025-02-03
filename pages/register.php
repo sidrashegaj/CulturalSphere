@@ -45,7 +45,7 @@
     <!-- Register Section -->
     <section class="register-section">
         <div class="container d-flex justify-content-center align-items-center min-vh-100">
-            <div class="row shadow-lg rounded-5" style="background-color: rgba(245, 245, 245, 0.9);">
+            <div class="row shadow-lg rounded-5" style="background-color: rgba(255, 246, 239, 0.82);">
                 <!-- Register Form -->
                 <div class="col-md-12 p-5">
                     <h2 class="text-center mb-4 text-dark">Join Cultural Sphere</h2>

@@ -41,8 +41,8 @@
     </div>
 
     <section class="login-section">
-        <div class="container d-flex justify-content-center align-items-center min-vh-100">
-            <div class="row shadow-lg rounded-5" style="max-width: 500px; background-color: rgba(255, 255, 255, 0.9);">
+        <div class="container d-flex justify-content-center align-items-center min-vh-80">
+            <div class="row shadow-lg rounded-5" style="max-width: 500px; background-color:rgba(255, 246, 239, 0.82);">
                 <div class="col-md-12 p-5">
                     <h2 class="text-center mb-4 text-dark">Welcome Back</h2>
                     <p class="text-center text-muted mb-4">Log in to access your personalized dashboard</p>
