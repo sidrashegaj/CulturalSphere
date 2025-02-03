@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Apply CircleType.js effect
+    //CircleType.js effect
     const circleText = document.getElementById("circle-text");
     if (circleText) {
         new CircleType(circleText);
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Smooth Scroll for Anchor Links
+    //Smooth Scroll for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
         link.addEventListener("click", (event) => {
             event.preventDefault();
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Navbar Transparency on Scroll
+    //Navbar Transparency on Scroll
     const navbar = document.querySelector(".navbar");
     if (navbar) {
         window.addEventListener("scroll", () => {
